@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lux Angel - Editor de Video | Portafolio</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --mint: #a8e6d9;
+            --mint-dark: #7dd3c0;
+            --peach: #ffc8a8;
+            --peach-dark: #ffb896;
+            --lavender: #e8d5f2;
+            --lavender-dark: #d4b5e8;
+            --text: #3d3d3d;
+            --text-light: #6b6b6b;
+            --text-lighter: #9a9a9a;
+            --border: #e0d0e0;
+            --white: #ffffff;
+            --bg: #fff9f5;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* ANIMACIONES */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.85); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-8px); }
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to   { transform: translateY(0);     opacity: 1; }
+        }
+
+        .anim-up    { opacity: 0; }
+        .anim-left  { opacity: 0; }
+        .anim-scale { opacity: 0; }
+        .anim-up.visible    { animation: fadeInUp  0.7s ease-out forwards; }
+        .anim-left.visible  { animation: fadeInLeft 0.7s ease-out forwards; }
+        .anim-scale.visible { animation: scaleIn   0.7s ease-out forwards; }
+
+        /* NAV */
+        nav {
+            position: sticky; top: 0;
+            background: rgba(255,249,245,0.97);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-bottom: 3px solid var(--mint);
+            z-index: 200;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            animation: slideDown 0.5s ease-out;
+        }
+        nav ul { list-style: none; display: flex; gap: 2rem; max-width: 1100px; margin: 0 auto; justify-content: center; flex-wrap: wrap; }
+        nav a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.95rem; position: relative; transition: color 0.3s; }
+        nav a:hover { color: var(--mint-dark); }
+        nav a::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 3px; background: var(--mint-dark); transition: width 0.3s; border-radius: 2px; }
+        nav a:hover::after { width: 100%; }
+
+        /* HERO */
+        .hero { padding: 5rem 2rem 3rem; text-align: center; max-width: 860px; margin: 0 auto; }
+        .hero h1 { font-size: 3.2rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; animation: fadeInUp 0.8s ease-out; }
+        .hero .subtitle { font-size: 1.3rem; color: var(--text-light); margin-bottom: 1.2rem; animation: fadeInUp 0.8s 0.1s ease-out backwards; }
+        .hero p { font-size: 1.05rem; color: var(--text-light); margin-bottom: 2.5rem; animation: fadeInUp 0.8s 0.2s ease-out backwards; }
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeInUp 0.8s 0.3s ease-out backwards; }
+
+        .btn { padding: 0.85rem 2rem; border: none; border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .btn-primary { background: var(--mint); color: var(--text); box-shadow: 0 4px 15px rgba(168,230,217,0.35); }
+        .btn-primary:hover { background: var(--mint-dark); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(125,211,192,0.45); }
+        .btn-secondary { background: transparent; border: 2px solid var(--mint); color: var(--text); }
+        .btn-secondary:hover { background: var(--mint); transform: translateY(-3px); }
+
+        /* SECCIONES */
+        .section-wrap { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-wrap h2 { font-size: 2.3rem; font-weight: 700; text-align: center; margin-bottom: 3rem; position: relative; padding-bottom: 1rem; color: var(--text); }
+        .section-wrap h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 70px; height: 4px; background: linear-gradient(90deg, var(--mint), var(--peach)); border-radius: 2px; }
+
+        /* SLIDER */
+        .slider-container { background: rgba(168,230,217,0.15); border-radius: 20px; padding: 2rem; border: 2px solid var(--mint); margin-bottom: 3rem; }
+        .slider-wrapper { overflow: hidden; border-radius: 14px; background: var(--white); }
+        .slider { display: flex; transition: transform 0.6s cubic-bezier(0.34,1.2,0.64,1); }
+        .slide { min-width: 100%; padding: 2rem; display: flex; gap: 2rem; align-items: center; }
+
+        .slide-media {
+            flex: 0 0 50%;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, var(--mint), var(--peach));
+            position: relative;
+        }
+        .slide-media video,
+        .slide-media img {
+            width: 100%; height: 100%; object-fit: cover;
+            display: block;
+        }
+
+        .slide-content { flex: 1; }
+        .slide-category { display: inline-block; padding: 0.4rem 1rem; background: rgba(168,230,217,0.3); color: var(--mint-dark); border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.8rem; border: 1px solid var(--mint); animation: float 2.5s ease-in-out infinite; }
+        .slide-title { font-size: 1.8rem; font-weight: 700; color: var(--text); margin-bottom: 0.8rem; }
+        .slide-desc { font-size: 1rem; color: var(--text-light); margin-bottom: 1.5rem; line-height: 1.7; }
+        .slide-btn { padding: 0.7rem 1.8rem; background: var(--peach); color: var(--text); border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: all 0.3s; text-decoration: none; display: inline-block; font-size: 0.95rem; }
+        .slide-btn:hover { background: var(--peach-dark); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(255,200,168,0.35); }
+
+        .slider-controls { display: flex; gap: 1rem; justify-content: center; align-items: center; margin-top: 1.5rem; }
+        .s-btn { width: 40px; height: 40px; border: 2px solid var(--mint); background: var(--white); border-radius: 50%; cursor: pointer; font-size: 1.1rem; color: var(--text); transition: all 0.3s; display: flex; align-items: center; justify-content: center; }
+        .s-btn:hover { background: var(--mint); transform: scale(1.1); }
+        .dots { display: flex; gap: 0.5rem; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(168,230,217,0.4); cursor: pointer; transition: all 0.3s; }
+        .dot.active { background: var(--mint); width: 30px; border-radius: 5px; }
+
+        /* FILTROS */
+        .filters { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+        .filter-btn { padding: 0.5rem 1.3rem; border: 2px solid var(--border); background: var(--white); border-radius: 25px; cursor: pointer; font-weight: 600; color: var(--text); transition: all 0.3s; font-size: 0.9rem; }
+        .filter-btn:hover, .filter-btn.active { background: var(--mint); border-color: var(--mint); transform: scale(1.05); }
+
+        /* GRID VIDEOS */
+        .videos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
+        .video-card { background: var(--white); border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.35s; border: 2px solid var(--border); }
+        .video-card:hover { transform: translateY(-6px); border-color: var(--peach); box-shadow: 0 12px 28px rgba(255,200,168,0.25); }
+        .card-media { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, var(--lavender), var(--mint)); overflow: hidden; position: relative; }
+        .card-media video,
+        .card-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; pointer-events: none; }
+        .video-card:hover .card-media video,
+        .video-card:hover .card-media img { transform: scale(1.07); }
+        .card-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0); transition: background 0.3s; }
+        .card-play::after { content: '▶'; font-size: 2rem; color: white; opacity: 0; transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1); transform: scale(0.5); }
+        .video-card:hover .card-play { background: rgba(0,0,0,0.25); }
+        .video-card:hover .card-play::after { opacity: 1; transform: scale(1); }
+        .card-info { padding: 1rem; }
+        .card-title { font-weight: 600; color: var(--text); margin-bottom: 0.4rem; font-size: 0.95rem; }
+        .card-tag { display: inline-block; padding: 0.3rem 0.7rem; background: rgba(255,200,168,0.2); color: #c87040; border-radius: 15px; font-size: 0.75rem; font-weight: 600; border: 1px solid var(--peach); }
+
+        /* SKILLS */
+        .skills-bg { background: linear-gradient(135deg, rgba(232,213,242,0.4), rgba(168,230,217,0.2)); border-radius: 20px; padding: 3rem 2rem; border: 2px solid var(--lavender); }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 2rem; }
+        .skill-card { background: var(--white); padding: 2rem; border-radius: 16px; border: 2px solid var(--border); transition: all 0.3s; }
+        .skill-card:hover { transform: translateY(-8px); border-color: var(--lavender-dark); box-shadow: 0 12px 30px rgba(232,213,242,0.4); }
+        .sk-icon { font-size: 2.5rem; margin-bottom: 1rem; display: inline-block; animation: float 3s ease-in-out infinite; }
+        .sk-title { font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
+        .sk-type { font-size: 0.8rem; color: var(--text-lighter); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem; font-weight: 600; }
+        .sk-desc { color: var(--text-light); font-size: 0.9rem; line-height: 1.6; }
+        .tool-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .tool-tag { background: rgba(168,230,217,0.2); color: #3d9e8a; padding: 0.35rem 0.8rem; border-radius: 15px; font-size: 0.78rem; font-weight: 600; border: 1px solid var(--mint); }
+
+        /* CONTACTO */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .contact-list { display: flex; flex-direction: column; gap: 1.2rem; }
+        .contact-item { background: var(--white); padding: 1.4rem; border-radius: 12px; border: 2px solid var(--border); border-left: 5px solid var(--peach); transition: all 0.3s; }
+        .contact-item:hover { transform: translateX(8px); box-shadow: 0 6px 16px rgba(255,200,168,0.2); }
+        .contact-item h3 { color: var(--text); font-size: 1rem; margin-bottom: 0.3rem; }
+        .contact-item a { color: var(--mint-dark); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+        .contact-form { background: var(--white); padding: 2rem; border-radius: 16px; border: 2px solid var(--border); }
+        .fg { margin-bottom: 1.2rem; }
+        .fg label { display: block; margin-bottom: 0.4rem; color: var(--text); font-weight: 600; font-size: 0.93rem; }
+        .fg input, .fg textarea { width: 100%; padding: 0.8rem; border: 2px solid var(--border); border-radius: 10px; font-family: inherit; font-size: 0.93rem; background: #fafafa; color: var(--text); transition: all 0.3s; }
+        .fg input:focus, .fg textarea:focus { outline: none; border-color: var(--mint); background: white; box-shadow: 0 0 0 3px rgba(168,230,217,0.2); }
+        .fg textarea { resize: vertical; min-height: 100px; }
+        .form-submit { width: 100%; padding: 0.85rem; background: var(--mint); color: var(--text); border: none; border-radius: 50px; font-weight: 700; cursor: pointer; font-size: 1rem; transition: all 0.3s; }
+        .form-submit:hover { background: var(--mint-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(125,211,192,0.3); }
+
+        /* MODAL */
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 500; align-items: center; justify-content: center; padding: 1rem; backdrop-filter: blur(4px); }
+        .modal-overlay.active { display: flex; animation: fadeInUp 0.35s ease-out; }
+        .modal-box { background: var(--white); border-radius: 16px; max-width: 780px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 2rem; box-shadow: 0 24px 60px rgba(0,0,0,0.2); animation: scaleIn 0.4s cubic-bezier(0.34,1.2,0.64,1); }
+        .modal-media { width: 100%; aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem; background: #000; }
+        .modal-media video, .modal-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .modal-title { font-size: 1.6rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; }
+        .modal-desc { color: var(--text-light); margin-bottom: 1.5rem; line-height: 1.7; }
+        .modal-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn-close { background: rgba(168,230,217,0.2); color: var(--text); border: 2px solid var(--mint); }
+        .btn-close:hover { background: var(--mint); }
+
+        /* FOOTER */
+        footer { background: linear-gradient(135deg, rgba(168,230,217,0.25), rgba(255,200,168,0.15)); border-top: 2px solid var(--mint); text-align: center; padding: 2rem; margin-top: 4rem; }
+        footer p { color: var(--text-light); font-weight: 500; }
+
+        /* ADMIN TRIGGER */
+        .admin-trigger { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 300; width: 48px; height: 48px; border-radius: 50%; background: var(--peach); border: 2px solid var(--peach-dark); cursor: pointer; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.12); transition: all 0.3s; }
+        .admin-trigger:hover { transform: scale(1.1); background: var(--peach-dark); }
+
+        /* ADMIN OVERLAY */
+        .admin-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 400; align-items: center; justify-content: center; padding: 1rem; backdrop-filter: blur(4px); }
+        .admin-overlay.active { display: flex; animation: fadeInUp 0.35s ease-out; }
+        .admin-box { background: var(--white); border-radius: 20px; width: 100%; max-width: 620px; max-height: 90vh; overflow-y: auto; box-shadow: 0 24px 60px rgba(0,0,0,0.2); animation: scaleIn 0.4s cubic-bezier(0.34,1.2,0.64,1); }
+        .admin-header { padding: 1.5rem 2rem; border-bottom: 2px solid var(--border); display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, rgba(168,230,217,0.2), rgba(255,200,168,0.15)); border-radius: 20px 20px 0 0; }
+        .admin-header h3 { font-size: 1.2rem; font-weight: 700; color: var(--text); }
+        .admin-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-light); transition: color 0.2s; line-height: 1; }
+        .admin-close:hover { color: var(--text); }
+        .admin-body { padding: 2rem; }
+
+        /* LOGIN */
+        .login-form { text-align: center; }
+        .login-form p { color: var(--text-light); margin-bottom: 1.5rem; font-size: 0.95rem; }
+        .login-form input { width: 100%; padding: 0.85rem; border: 2px solid var(--border); border-radius: 10px; font-size: 1rem; text-align: center; letter-spacing: 3px; margin-bottom: 1rem; color: var(--text); background: #fafafa; transition: all 0.3s; }
+        .login-form input:focus { outline: none; border-color: var(--mint); background: white; }
+        .login-error { color: #e05a5a; font-size: 0.9rem; margin-bottom: 1rem; display: none; }
+
+        /* TABS ADMIN */
+        .admin-tabs { display: flex; border-bottom: 2px solid var(--border); margin-bottom: 1.5rem; }
+        .admin-tab { padding: 0.7rem 1.2rem; border: none; background: none; cursor: pointer; font-weight: 600; font-size: 0.9rem; color: var(--text-light); border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+        .admin-tab.active { color: var(--mint-dark); border-bottom-color: var(--mint-dark); }
+
+        /* FORMULARIO AGREGAR VIDEO */
+        .add-form .fg { margin-bottom: 1.1rem; }
+        .add-form label { display: block; margin-bottom: 0.4rem; font-weight: 600; font-size: 0.9rem; color: var(--text); }
+        .add-form input, .add-form select, .add-form textarea { width: 100%; padding: 0.75rem; border: 2px solid var(--border); border-radius: 10px; font-family: inherit; font-size: 0.93rem; color: var(--text); background: #fafafa; transition: all 0.3s; }
+        .add-form input:focus, .add-form select:focus, .add-form textarea:focus { outline: none; border-color: var(--mint); background: white; }
+        .add-form textarea { min-height: 80px; resize: vertical; }
+        .add-form .hint { font-size: 0.8rem; color: var(--text-lighter); margin-top: 0.3rem; }
+        .btn-add { width: 100%; padding: 0.85rem; background: var(--mint); color: var(--text); border: none; border-radius: 50px; font-weight: 700; cursor: pointer; font-size: 1rem; margin-top: 0.5rem; transition: all 0.3s; }
+        .btn-add:hover { background: var(--mint-dark); transform: translateY(-2px); }
+        .success-msg { background: rgba(168,230,217,0.3); border: 2px solid var(--mint); border-radius: 10px; padding: 1rem; text-align: center; color: #2d7d6a; font-weight: 600; margin-top: 1rem; display: none; }
+
+        /* LISTA DE VIDEOS EN ADMIN */
+        .admin-video-list { display: flex; flex-direction: column; gap: 1rem; }
+        .admin-video-item { display: flex; gap: 1rem; align-items: center; padding: 1rem; border: 2px solid var(--border); border-radius: 12px; background: #fafafa; transition: all 0.2s; }
+        .admin-video-item:hover { border-color: var(--peach); background: white; }
+        .admin-thumb { width: 80px; height: 50px; border-radius: 8px; overflow: hidden; background: linear-gradient(135deg, var(--mint), var(--peach)); flex-shrink: 0; }
+        .admin-thumb img, .admin-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .admin-video-info { flex: 1; min-width: 0; }
+        .admin-video-title { font-weight: 600; font-size: 0.9rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .admin-video-cat { font-size: 0.78rem; color: var(--text-lighter); margin-top: 0.2rem; }
+        .btn-delete { background: none; border: 2px solid #f0a0a0; border-radius: 8px; padding: 0.4rem 0.8rem; color: #c05050; font-size: 0.8rem; font-weight: 600; cursor: pointer; flex-shrink: 0; transition: all 0.2s; }
+        .btn-delete:hover { background: #fee; border-color: #d05050; }
+        .empty-state { text-align: center; color: var(--text-lighter); padding: 2rem; font-size: 0.95rem; }
+
+        /* TIPO VIDEO TABS */
+        .type-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+        .type-tab { flex: 1; padding: 0.6rem; border: 2px solid var(--border); background: white; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 0.85rem; color: var(--text-light); transition: all 0.2s; text-align: center; }
+        .type-tab.active { border-color: var(--mint); background: rgba(168,230,217,0.2); color: var(--mint-dark); }
+        .type-section { display: none; }
+        .type-section.active { display: block; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .slide { flex-direction: column; }
+            .slide-media { flex: 0 0 100%; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .section-wrap h2 { font-size: 1.8rem; }
+            nav ul { gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Lux Angel</h1>
+    <p class="subtitle">Editor de Video Profesional</p>
+    <p>Transformo ideas en contenido visual impactante. Especializado en edición de video, motion graphics y color grading con herramientas de nivel profesional.</p>
+    <div class="cta-buttons">
+        <a href="#videos" class="btn btn-primary">Ver mi trabajo</a>
+        <a href="#contacto" class="btn btn-secondary">Contáctame</a>
+    </div>
+</div>
+
+<!-- PORTAFOLIO -->
+<div class="section-wrap" id="videos">
+    <h2 class="anim-up">Mi Portafolio</h2>
+
+    <!-- SLIDER -->
+    <div class="slider-container anim-up">
+        <div class="slider-wrapper">
+            <div class="slider" id="slider"></div>
+        </div>
+        <div class="slider-controls">
+            <button class="s-btn" id="prevBtn">❮</button>
+            <div class="dots" id="dots"></div>
+            <button class="s-btn" id="nextBtn">❯</button>
+        </div>
+    </div>
+
+    <!-- GRID -->
+    <div class="filters" id="filters"></div>
+    <div class="videos-grid" id="videosGrid"></div>
+</div>
+
+<!-- SKILLS -->
+<div class="section-wrap" id="skills">
+    <h2 class="anim-up">Skills & Herramientas</h2>
+    <div class="skills-bg">
+        <div class="skills-grid" id="skillsGrid"></div>
+    </div>
+</div>
+
+<!-- CONTACTO -->
+<div class="section-wrap" id="contacto">
+    <h2 class="anim-up">Contacto</h2>
+    <div class="contact-grid">
+        <div class="contact-list">
+            <div class="contact-item anim-left">
+                <h3>📧 Email</h3>
+                <a href="mailto:tumail@gmail.com">tumail@gmail.com</a>
+            </div>
+            <div class="contact-item anim-left">
+                <h3>🎬 YouTube</h3>
+                <a href="https://youtube.com" target="_blank">@tu-canal</a>
+            </div>
+            <div class="contact-item anim-left">
+                <h3>📱 WhatsApp</h3>
+                <a href="https://wa.me/525212345678" target="_blank">+52 521 234 5678</a>
+            </div>
+            <div class="contact-item anim-left">
+                <h3>💼 LinkedIn</h3>
+                <a href="https://linkedin.com" target="_blank">Tu LinkedIn</a>
+            </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+            <div class="fg"><label>Nombre</label><input type="text" id="nombre" required></div>
+            <div class="fg"><label>Email</label><input type="email" id="emailField" required></div>
+            <div class="fg"><label>Mensaje</label><textarea id="mensaje" required></textarea></div>
+            <button type="submit" class="form-submit">Enviar Mensaje</button>
+        </form>
+    </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+    <div class="modal-box">
+        <div class="modal-media" id="modalMedia"></div>
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <p class="modal-desc" id="modalDesc"></p>
+        <div class="modal-btns">
+            <button class="btn btn-close" id="closeBtn">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 Lux Angel - Editor de Video | Portafolio Profesional</p>
+</footer>
+
+<!-- BOTÓN ADMIN -->
+<button class="admin-trigger" id="adminTrigger" title="Panel de administración">⚙️</button>
+
+<!-- PANEL ADMIN -->
+<div class="admin-overlay" id="adminOverlay">
+    <div class="admin-box">
+        <div class="admin-header">
+            <h3 id="adminHeaderTitle">🔐 Panel de administración</h3>
+            <button class="admin-close" id="adminClose">✕</button>
+        </div>
+        <div class="admin-body">
+            <!-- LOGIN -->
+            <div id="loginSection">
+                <div class="login-form">
+                    <p>Ingresa tu contraseña para administrar el portafolio</p>
+                    <input type="password" id="pwdInput" placeholder="Contraseña">
+                    <div class="login-error" id="loginError">Contraseña incorrecta. Intenta de nuevo.</div>
+                    <button class="btn-add" id="loginBtn">Entrar</button>
+                </div>
+            </div>
+            <!-- PANEL -->
+            <div id="adminPanel" style="display:none;">
+                <div class="admin-tabs">
+                    <button class="admin-tab active" data-tab="add">➕ Agregar video</button>
+                    <button class="admin-tab" data-tab="manage">🎬 Mis videos</button>
+                </div>
+                <!-- TAB AGREGAR -->
+                <div id="tab-add">
+                    <div class="type-tabs">
+                        <div class="type-tab active" data-type="youtube">🔗 Link de YouTube</div>
+                        <div class="type-tab" data-type="vimeo">🔗 Link de Vimeo</div>
+                    </div>
+                    <div class="type-section active" id="type-youtube">
+                        <div class="add-form">
+                            <div class="fg"><label>Link de YouTube</label><input type="url" id="ytUrl" placeholder="https://www.youtube.com/watch?v=..."><div class="hint">Pega el link completo de tu video</div></div>
+                            <div class="fg"><label>Título</label><input type="text" id="ytTitle" placeholder="Ej: Campaña publicitaria 2025"></div>
+                            <div class="fg"><label>Descripción</label><textarea id="ytDesc" placeholder="Describe brevemente el video..."></textarea></div>
+                            <div class="fg"><label>Categoría</label><select id="ytCat"><option value="youtube">YouTube</option><option value="publicidad">Publicidad</option><option value="redes">Redes Sociales</option><option value="educativo">Educativo</option></select></div>
+                            <button class="btn-add" id="addYtBtn">Agregar al portafolio ✓</button>
+                            <div class="success-msg" id="ytSuccess">¡Video agregado! Ya aparece en tu portafolio.</div>
+                        </div>
+                    </div>
+                    <div class="type-section" id="type-vimeo">
+                        <div class="add-form">
+                            <div class="fg"><label>Link de Vimeo</label><input type="url" id="vmUrl" placeholder="https://vimeo.com/..."><div class="hint">Pega el link completo de tu video</div></div>
+                            <div class="fg"><label>Título</label><input type="text" id="vmTitle" placeholder="Ej: Motion graphics corporativo"></div>
+                            <div class="fg"><label>Descripción</label><textarea id="vmDesc" placeholder="Describe brevemente el video..."></textarea></div>
+                            <div class="fg"><label>Categoría</label><select id="vmCat"><option value="publicidad">Publicidad</option><option value="youtube">YouTube</option><option value="redes">Redes Sociales</option><option value="educativo">Educativo</option></select></div>
+                            <button class="btn-add" id="addVmBtn">Agregar al portafolio ✓</button>
+                            <div class="success-msg" id="vmSuccess">¡Video agregado! Ya aparece en tu portafolio.</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- TAB ADMINISTRAR -->
+                <div id="tab-manage" style="display:none;">
+                    <div class="admin-video-list" id="adminVideoList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ─── DATOS ───────────────────────────────────────────────────────────────
+    // Los videos locales se sirven desde la misma carpeta del HTML
+    const videos = [
+        {
+            id: 1,
+            title: 'Einstein - Animación',
+            category: 'publicidad',
+            src: 'einstein.mov',
+            type: 'video',
+            mime: 'video/quicktime',
+            description: 'Animación profesional con motion graphics avanzados y efectos visuales de alto impacto.'
+        },
+        {
+            id: 2,
+            title: 'Video Pro',
+            category: 'youtube',
+            src: 'video_pro.mp4',
+            type: 'video',
+            mime: 'video/mp4',
+            description: 'Producción audiovisual profesional con color grading, edición dinámica y sonorización.'
+        }
+    ];
+
+    const skills = [
+        { icon: '🎬', title: 'DaVinci Resolve Studio', type: 'Software Principal',   desc: 'Edición, color grading, Fusion y Fairlight en un solo flujo de trabajo profesional.', tools: ['Edición', 'Color Grading', 'Fusion', 'Fairlight'] },
+        { icon: '✨', title: 'After Effects',           type: 'Motion Graphics',      desc: 'Animaciones, efectos visuales, composición y diseño de movimiento de nivel cine.', tools: ['Motion Design', 'VFX', 'Composición', 'Expresiones'] },
+        { icon: '🎨', title: 'Adobe Premiere Pro',      type: 'Edición Alternativa',  desc: 'Edición multipista, secuencias complejas y flujo colaborativo con Adobe CC.', tools: ['Multicam', 'Transiciones', 'Lumetri', 'Secuencias'] },
+        { icon: '🎭', title: 'Motion Graphics',         type: 'Especialidad',         desc: 'Títulos animados, infografías, lower thirds y gráficos en movimiento únicos.', tools: ['Animación', 'Kinetic Type', 'Efectos 3D', 'Títulos'] },
+        { icon: '🌈', title: 'Color Grading',           type: 'Post-producción',      desc: 'Corrección de color avanzada, LUTs personalizados y estética cinematográfica.', tools: ['LUT', 'Corrección', 'Scopes', 'Skin Tones'] },
+        { icon: '🎵', title: 'Sonorización & Audio',    type: 'Post-producción',      desc: 'Sincronización, mezcla, diseño sonoro y mastering para entrega multiplataforma.', tools: ['Sync', 'Mezcla', 'SFX', 'Mastering'] }
+    ];
+
+    const CATEGORIES = { todos: 'Todos', youtube: 'YouTube', publicidad: 'Publicidad', redes: 'Redes Sociales', educativo: 'Educativo' };
+
+    let currentSlide = 0;
+
+    // ─── HELPERS ─────────────────────────────────────────────────────────────
+    function mediaEl(video, controls = false) {
+        if (video.type === 'video') {
+            return `<video ${controls ? 'controls' : ''} muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;">
+                        <source src="${video.src}" type="${video.mime}">
+                    </video>`;
+        }
+        return `<img src="${video.src}" alt="${video.title}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+    }
+
+    // ─── SLIDER ──────────────────────────────────────────────────────────────
+    function renderSlider() {
+        document.getElementById('slider').innerHTML = videos.map(v => `
+            <div class="slide">
+                <div class="slide-media">${mediaEl(v)}</div>
+                <div class="slide-content">
+                    <span class="slide-category">${CATEGORIES[v.category] || v.category}</span>
+                    <h3 class="slide-title">${v.title}</h3>
+                    <p class="slide-desc">${v.description}</p>
+                    <button class="slide-btn" onclick="openModal(${v.id})">Ver video completo →</button>
+                </div>
+            </div>`).join('');
+
+        document.getElementById('dots').innerHTML = videos.map((_, i) =>
+            `<div class="dot ${i === 0 ? 'active' : ''}" data-i="${i}"></div>`).join('');
+
+        updateSlider();
+    }
+
+    function updateSlider() {
+        document.getElementById('slider').style.transform = `translateX(-${currentSlide * 100}%)`;
+        document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+    }
+
+    document.getElementById('nextBtn').onclick = () => { currentSlide = (currentSlide + 1) % videos.length; updateSlider(); };
+    document.getElementById('prevBtn').onclick = () => { currentSlide = (currentSlide - 1 + videos.length) % videos.length; updateSlider(); };
+    document.getElementById('dots').addEventListener('click', e => {
+        if (e.target.dataset.i !== undefined) { currentSlide = +e.target.dataset.i; updateSlider(); }
+    });
+
+    // ─── FILTROS + GRID ───────────────────────────────────────────────────────
+    function renderFilters() {
+        const cats = ['todos', ...new Set(videos.map(v => v.category))];
+        document.getElementById('filters').innerHTML = cats.map(c =>
+            `<button class="filter-btn ${c === 'todos' ? 'active' : ''}" data-cat="${c}">${CATEGORIES[c] || c}</button>`
+        ).join('');
+    }
+
+    function renderGrid(cat = 'todos') {
+        const list = cat === 'todos' ? videos : videos.filter(v => v.category === cat);
+        document.getElementById('videosGrid').innerHTML = list.map((v, i) => `
+            <div class="video-card anim-scale" style="animation-delay:${i * 0.1}s" data-id="${v.id}">
+                <div class="card-media">
+                    ${mediaEl(v)}
+                    <div class="card-play"></div>
+                </div>
+                <div class="card-info">
+                    <div class="card-title">${v.title}</div>
+                    <span class="card-tag">${CATEGORIES[v.category] || v.category}</span>
+                </div>
+            </div>`).join('');
+
+        // Observar nuevas cards
+        document.querySelectorAll('.anim-scale').forEach(el => observer.observe(el));
+    }
+
+    document.getElementById('filters').addEventListener('click', e => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderGrid(btn.dataset.cat);
+    });
+
+    document.getElementById('videosGrid').addEventListener('click', e => {
+        const card = e.target.closest('.video-card');
+        if (card) openModal(+card.dataset.id);
+    });
+
+    // ─── MODAL ───────────────────────────────────────────────────────────────
+    function openModal(id) {
+        const v = videos.find(x => x.id === id);
+        if (!v) return;
+        document.getElementById('modalTitle').textContent = v.title;
+        document.getElementById('modalDesc').textContent  = v.description;
+        document.getElementById('modalMedia').innerHTML   = mediaEl(v, true);
+        // Autoplay si es video
+        const vid = document.querySelector('#modalMedia video');
+        if (vid) { vid.muted = false; vid.play().catch(() => {}); }
+        document.getElementById('modal').classList.add('active');
+    }
+
+    function closeModal() {
+        const vid = document.querySelector('#modalMedia video');
+        if (vid) vid.pause();
+        document.getElementById('modal').classList.remove('active');
+        document.getElementById('modalMedia').innerHTML = '';
+    }
+
+    document.getElementById('closeBtn').onclick = closeModal;
+    document.getElementById('modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+
+    // ─── SKILLS ──────────────────────────────────────────────────────────────
+    function renderSkills() {
+        document.getElementById('skillsGrid').innerHTML = skills.map((s, i) => `
+            <div class="skill-card anim-scale" style="animation-delay:${i * 0.1}s">
+                <span class="sk-icon">${s.icon}</span>
+                <h3 class="sk-title">${s.title}</h3>
+                <div class="sk-type">${s.type}</div>
+                <p class="sk-desc">${s.desc}</p>
+                <div class="tool-list">${s.tools.map(t => `<span class="tool-tag">${t}</span>`).join('')}</div>
+            </div>`).join('');
+        document.querySelectorAll('#skillsGrid .anim-scale').forEach(el => observer.observe(el));
+    }
+
+    // ─── CONTACTO ────────────────────────────────────────────────────────────
+    document.getElementById('contactForm').addEventListener('submit', e => {
+        e.preventDefault();
+        const n = document.getElementById('nombre').value;
+        const em = document.getElementById('emailField').value;
+        const m = document.getElementById('mensaje').value;
+        window.location.href = `mailto:tumail@gmail.com?subject=Mensaje de ${encodeURIComponent(n)}&body=De: ${encodeURIComponent(em)}%0A%0A${encodeURIComponent(m)}`;
+    });
+
+    // ─── SCROLL OBSERVER ─────────────────────────────────────────────────────
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.anim-up, .anim-left, .anim-scale').forEach(el => observer.observe(el));
+
+    // ─── AUTO-SLIDER ─────────────────────────────────────────────────────────
+    setInterval(() => { currentSlide = (currentSlide + 1) % videos.length; updateSlider(); }, 9000);
+
+    // ─── INIT ─────────────────────────────────────────────────────────────────
+    renderSlider();
+    renderFilters();
+    renderGrid();
+    renderSkills();
+
+    // ══════════════════════════════════════════════════════════════════════════
+    // PANEL ADMIN
+    // Contraseña: cámbiala aquí cuando lo subas a GitHub
+    const ADMIN_PASSWORD = 'luxangel2025';
+    const STORAGE_KEY    = 'lux_extra_videos';
+
+    // Cargar videos extras guardados en localStorage
+    function loadExtraVideos() {
+        try {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                const extras = JSON.parse(saved);
+                extras.forEach(v => { if (!videos.find(x => x.id === v.id)) videos.push(v); });
+            }
+        } catch(e) {}
+    }
+
+    function saveExtraVideos() {
+        const extras = videos.filter(v => v.source === 'admin');
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(extras));
+    }
+
+    function getYtId(url) {
+        const m = url.match(/(?:v=|youtu\.be\/|embed\/)([A-Za-z0-9_-]{11})/);
+        return m ? m[1] : null;
+    }
+
+    function getVimeoId(url) {
+        const m = url.match(/vimeo\.com\/(\d+)/);
+        return m ? m[1] : null;
+    }
+
+    function refreshAll() {
+        renderSlider();
+        renderFilters();
+        renderGrid();
+    }
+
+    // ── LOGIN ──
+    document.getElementById('adminTrigger').onclick = () => {
+        document.getElementById('adminOverlay').classList.add('active');
+    };
+    document.getElementById('adminClose').onclick = closeAdmin;
+    document.getElementById('adminOverlay').addEventListener('click', e => {
+        if (e.target === e.currentTarget) closeAdmin();
+    });
+
+    function closeAdmin() {
+        document.getElementById('adminOverlay').classList.remove('active');
+    }
+
+    document.getElementById('loginBtn').onclick = () => {
+        const pwd = document.getElementById('pwdInput').value;
+        if (pwd === ADMIN_PASSWORD) {
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('adminPanel').style.display   = 'block';
+            document.getElementById('adminHeaderTitle').textContent = '⚙️ Panel de administración';
+            document.getElementById('loginError').style.display = 'none';
+            document.getElementById('pwdInput').value = '';
+            renderAdminList();
+        } else {
+            document.getElementById('loginError').style.display = 'block';
+        }
+    };
+
+    document.getElementById('pwdInput').addEventListener('keydown', e => {
+        if (e.key === 'Enter') document.getElementById('loginBtn').click();
+    });
+
+    // ── TABS PRINCIPALES ──
+    document.querySelectorAll('.admin-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            const name = tab.dataset.tab;
+            document.getElementById('tab-add').style.display    = name === 'add'    ? 'block' : 'none';
+            document.getElementById('tab-manage').style.display = name === 'manage' ? 'block' : 'none';
+            if (name === 'manage') renderAdminList();
+        });
+    });
+
+    // ── TYPE TABS (YouTube / Vimeo) ──
+    document.querySelectorAll('.type-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.type-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.type-section').forEach(s => s.classList.remove('active'));
+            tab.classList.add('active');
+            document.getElementById('type-' + tab.dataset.type).classList.add('active');
+        });
+    });
+
+    // ── AGREGAR YOUTUBE ──
+    document.getElementById('addYtBtn').onclick = () => {
+        const url   = document.getElementById('ytUrl').value.trim();
+        const title = document.getElementById('ytTitle').value.trim();
+        const desc  = document.getElementById('ytDesc').value.trim();
+        const cat   = document.getElementById('ytCat').value;
+        if (!url || !title) { alert('Por favor completa el link y el título.'); return; }
+        const ytId = getYtId(url);
+        if (!ytId) { alert('No reconozco ese link de YouTube. Asegúrate de pegar el link completo.'); return; }
+
+        const newVideo = {
+            id:          Date.now(),
+            title,
+            category:   cat,
+            src:        `https://www.youtube.com/embed/${ytId}`,
+            thumbnail:  `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`,
+            type:       'youtube',
+            description: desc || 'Video de YouTube.',
+            source:     'admin'
+        };
+
+        videos.push(newVideo);
+        saveExtraVideos();
+        refreshAll();
+
+        document.getElementById('ytUrl').value = '';
+        document.getElementById('ytTitle').value = '';
+        document.getElementById('ytDesc').value = '';
+        const msg = document.getElementById('ytSuccess');
+        msg.style.display = 'block';
+        setTimeout(() => msg.style.display = 'none', 3000);
+    };
+
+    // ── AGREGAR VIMEO ──
+    document.getElementById('addVmBtn').onclick = () => {
+        const url   = document.getElementById('vmUrl').value.trim();
+        const title = document.getElementById('vmTitle').value.trim();
+        const desc  = document.getElementById('vmDesc').value.trim();
+        const cat   = document.getElementById('vmCat').value;
+        if (!url || !title) { alert('Por favor completa el link y el título.'); return; }
+        const vmId = getVimeoId(url);
+        if (!vmId) { alert('No reconozco ese link de Vimeo. Asegúrate de pegar el link completo.'); return; }
+
+        const newVideo = {
+            id:          Date.now(),
+            title,
+            category:   cat,
+            src:        `https://player.vimeo.com/video/${vmId}`,
+            thumbnail:  `https://vumbnail.com/${vmId}.jpg`,
+            type:       'vimeo',
+            description: desc || 'Video de Vimeo.',
+            source:     'admin'
+        };
+
+        videos.push(newVideo);
+        saveExtraVideos();
+        refreshAll();
+
+        document.getElementById('vmUrl').value = '';
+        document.getElementById('vmTitle').value = '';
+        document.getElementById('vmDesc').value = '';
+        const msg = document.getElementById('vmSuccess');
+        msg.style.display = 'block';
+        setTimeout(() => msg.style.display = 'none', 3000);
+    };
+
+    // ── LISTA EN ADMIN ──
+    function renderAdminList() {
+        const el = document.getElementById('adminVideoList');
+        if (!videos.length) {
+            el.innerHTML = '<div class="empty-state">No hay videos todavía.</div>';
+            return;
+        }
+        el.innerHTML = videos.map(v => {
+            const thumb = v.thumbnail
+                ? `<img src="${v.thumbnail}" alt="${v.title}">`
+                : (v.type === 'video' ? `<video src="${v.src}" muted preload="metadata"></video>` : '');
+            const deletable = v.source === 'admin';
+            return `
+            <div class="admin-video-item">
+                <div class="admin-thumb">${thumb}</div>
+                <div class="admin-video-info">
+                    <div class="admin-video-title">${v.title}</div>
+                    <div class="admin-video-cat">${CATEGORIES[v.category] || v.category} · ${v.type}</div>
+                </div>
+                ${deletable ? `<button class="btn-delete" data-id="${v.id}">Eliminar</button>` : '<span style="font-size:0.75rem;color:var(--text-lighter);flex-shrink:0;">Fijo</span>'}
+            </div>`;
+        }).join('');
+
+        el.querySelectorAll('.btn-delete').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = +btn.dataset.id;
+                const idx = videos.findIndex(v => v.id === id);
+                if (idx !== -1) {
+                    videos.splice(idx, 1);
+                    saveExtraVideos();
+                    refreshAll();
+                    renderAdminList();
+                }
+            });
+        });
+    }
+
+    // Actualizar mediaEl para soportar iframes de YouTube/Vimeo
+    const _mediaElOrig = mediaEl;
+    window.mediaEl = function(video, controls = false) {
+        if (video.type === 'youtube' || video.type === 'vimeo') {
+            if (controls) {
+                return `<iframe src="${video.src}?autoplay=1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="width:100%;height:100%;display:block;"></iframe>`;
+            }
+            return `<img src="${video.thumbnail}" alt="${video.title}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+        }
+        return _mediaElOrig(video, controls);
+    };
+
+    // Cargar extras y refrescar
+    loadExtraVideos();
+    refreshAll();
+    // ══════════════════════════════════════════════════════════════════════════
+</script>
+</body>
+</html>
