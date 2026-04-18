@@ -663,7 +663,7 @@ section    { padding: 6rem 0; }
 ══════════════════════════════════════════════ -->
 <section class="hero">
     <div class="container">
-        <div class="hero__eyebrow">Editor de Video</div>
+        <div class="hero__eyebrow">Editor de Video · Toluca, México</div>
         <h1 class="hero__title">
             Cada frame<br>cuenta una <em>historia</em>
         </h1>
@@ -975,7 +975,7 @@ let filterCat    = 'todos';
 
 /* ── UTILS ───────────────────────────────────────────────── */
 function getYtId(url) {
-    const m = url.match(/(?:v=|youtu\.be\/|embed\/)([A-Za-z0-9_-]{11})/);
+    const m = url.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([A-Za-z0-9_-]{11})/);
     return m ? m[1] : null;
 }
 
