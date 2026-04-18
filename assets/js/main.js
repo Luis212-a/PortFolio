@@ -491,7 +491,7 @@ function addTestimonial(name, role, quote, photo, stars) {
    HERO PARALLAX
 ══════════════════════════════════════════ */
 function heroParallax() {
-    const bg = document.querySelector('.hero__bg');
+    const bg = document.querySelector('.hero__bg01');
     if (!bg) return;
     const scrolled = window.scrollY;
     bg.style.transform = `translateY(${scrolled * 0.3}px)`;
@@ -509,7 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
     refreshAll();
 
     // Hero bg loaded animation
-    const heroBg = document.querySelector('.hero__bg');
+    const heroBg = document.querySelector('.hero__bg01');
     if (heroBg) {
         const img = new Image();
         img.onload = () => heroBg.classList.add('loaded');
