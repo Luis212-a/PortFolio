@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Luis Rod — Editor de Video profesional. Motion graphics, color grading y edición para YouTube, publicidad y redes sociales.">
+    <meta name="theme-color" content="#0e0d0b">
+    <title>Luis Rod — Editor de Video</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/tokens.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     NAV
+══════════════════════════════════════════ -->
+<header class="nav" id="nav">
+    <div class="nav__inner">
+        <a href="#" class="nav__logo">Luis <span>Rod</span></a>
+
+        <!-- Desktop links -->
+        <nav class="nav__links" aria-label="Navegación principal">
+            <a href="#portfolio">Portafolio</a>
+            <a href="#skills">Skills</a>
+            <a href="#clientes">Clientes</a>
+            <a href="#testimonios">Testimonios</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+
+        <!-- Desktop social -->
+        <div class="nav__social">
+            <a href="https://youtube.com/@luisrod" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            <a href="https://instagram.com/luisrod.edit" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </a>
+            <a href="https://tiktok.com/@luisrod" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </a>
+        </div>
+
+        <!-- Hamburger -->
+        <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <nav class="nav__mobile" id="navMobile" aria-label="Menú móvil">
+        <a href="#portfolio">Portafolio</a>
+        <a href="#skills">Skills</a>
+        <a href="#clientes">Clientes</a>
+        <a href="#testimonios">Testimonios</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+</header>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="hero" aria-label="Presentación">
+    <div class="hero__bg" role="img" aria-hidden="true"></div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <div class="container">
+        <div class="hero__eyebrow">Editor de Video</div>
+
+        <h1 class="hero__title">
+            Cada frame<br>cuenta una <em>historia</em>
+        </h1>
+
+        <p class="hero__subtitle">
+            Motion graphics, color grading y edición profesional
+            para marcas, creadores y agencias que quieren destacar.
+        </p>
+
+        <div class="hero__cta">
+            <a href="#portfolio" class="btn btn--primary">Ver mi trabajo</a>
+            <a href="#contacto"  class="btn btn--outline" style="color:#f2ede4;border-color:rgba(242,237,228,0.35)">Hablemos</a>
+        </div>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">Scroll</div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PORTFOLIO
+══════════════════════════════════════════ -->
+<section class="portfolio" id="portfolio">
+    <div class="container">
+
+        <div class="section-header anim-up">
+            <div class="section-header__label">Portafolio</div>
+            <h2 class="section-header__title">Trabajos recientes</h2>
+            <div class="divider"></div>
+        </div>
+
+        <!-- Slider destacado -->
+        <div class="slider-wrap anim-up">
+            <div class="slider-track" id="sliderTrack"></div>
+        </div>
+        <div class="slider-controls anim-up">
+            <button class="s-btn" id="prevBtn" aria-label="Anterior">&#8592;</button>
+            <div class="dots" id="dots"></div>
+            <button class="s-btn" id="nextBtn" aria-label="Siguiente">&#8594;</button>
+        </div>
+
+        <!-- Filtros y grid -->
+        <div class="filters" id="filters" style="margin-top:3.5rem;" role="group" aria-label="Filtrar por categoría"></div>
+        <div class="videos-grid" id="videosGrid" role="list"></div>
+
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SKILLS
+══════════════════════════════════════════ -->
+<section class="skills" id="skills">
+    <div class="container">
+        <div class="section-header anim-up">
+            <div class="section-header__label">Herramientas</div>
+            <h2 class="section-header__title">Skills & Software</h2>
+            <p class="section-header__sub">Las herramientas que uso en cada proyecto para garantizar resultados de nivel profesional.</p>
+            <div class="divider"></div>
+        </div>
+        <div class="skills-grid" id="skillsGrid"></div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CLIENTES
+══════════════════════════════════════════ -->
+<section class="clients" id="clientes">
+    <div class="container">
+        <div class="section-header anim-up">
+            <div class="section-header__label">Clientes</div>
+            <h2 class="section-header__title">Con quienes he trabajado</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="clients-grid" id="clientsGrid"></div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     TESTIMONIOS
+══════════════════════════════════════════ -->
+<section class="testimonials" id="testimonios">
+    <div class="container">
+        <div class="section-header anim-up">
+            <div class="section-header__label">Testimonios</div>
+            <h2 class="section-header__title">Lo que dicen de mi trabajo</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="testimonials-grid" id="testimonialsGrid"></div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CONTACTO
+══════════════════════════════════════════ -->
+<section class="contact" id="contacto">
+    <div class="container">
+        <div class="section-header anim-up">
+            <div class="section-header__label">Contacto</div>
+            <h2 class="section-header__title">¿Tienes un proyecto?</h2>
+            <div class="divider"></div>
+        </div>
+
+        <div class="contact-grid">
+            <!-- Info -->
+            <div class="anim-left">
+                <h3 class="contact-info__title">Trabajemos juntos</h3>
+                <p class="contact-info__sub">Disponible para proyectos freelance de edición, motion graphics y post-producción. Escríbeme y hablamos.</p>
+
+                <div class="contact-items">
+                    <a class="contact-item" href="mailto:tumail@gmail.com">
+                        <div class="contact-item__icon">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-item__label">Email</div>
+                            <div class="contact-item__value">tumail@gmail.com</div>
+                        </div>
+                    </a>
+
+                    <a class="contact-item" href="https://instagram.com/luisrod.edit" target="_blank" rel="noopener">
+                        <div class="contact-item__icon">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-item__label">Instagram</div>
+                            <div class="contact-item__value">@luisrod.edit</div>
+                        </div>
+                    </a>
+
+                    <a class="contact-item" href="https://youtube.com/@luisrod" target="_blank" rel="noopener">
+                        <div class="contact-item__icon">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-item__label">YouTube</div>
+                            <div class="contact-item__value">@luisrod</div>
+                        </div>
+                    </a>
+
+                    <a class="contact-item" href="https://wa.me/521XXXXXXXXXX" target="_blank" rel="noopener">
+                        <div class="contact-item__icon">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-item__label">WhatsApp</div>
+                            <div class="contact-item__value">Enviar mensaje</div>
+                        </div>
+                    </a>
+
+                    <a class="contact-item" href="https://tiktok.com/@luisrod" target="_blank" rel="noopener">
+                        <div class="contact-item__icon">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-item__label">TikTok</div>
+                            <div class="contact-item__value">@luisrod</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="contact-cta anim-right">
+                <h3 class="contact-cta__title">¿Listo para empezar?</h3>
+                <p class="contact-cta__sub">Cuéntame tu proyecto y te respondo en menos de 24 horas. Sin compromisos, sin formularios.</p>
+                <div class="contact-cta__btns">
+                    <a href="mailto:tumail@gmail.com?subject=Proyecto de edición de video" class="btn btn--primary">
+                        Enviar email ↗
+                    </a>
+                    <a href="https://wa.me/521XXXXXXXXXX?text=Hola%20Luis,%20me%20interesa%20trabajar%20contigo" target="_blank" rel="noopener" class="btn btn--outline">
+                        WhatsApp
+                    </a>
+                    <a href="https://instagram.com/luisrod.edit" target="_blank" rel="noopener" class="btn btn--outline">
+                        Instagram
+                    </a>
+                    <a href="https://tiktok.com/@luisrod" target="_blank" rel="noopener" class="btn btn--outline">
+                        TikTok
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div class="footer__brand">
+                <div class="footer__logo">Luis <span>Rod</span></div>
+                <p class="footer__tagline">Editor de video profesional especializado en motion graphics, color grading y contenido para redes sociales.</p>
+            </div>
+            <div class="footer__social">
+                <a href="https://youtube.com/@luisrod" target="_blank" rel="noopener" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+                <a href="https://instagram.com/luisrod.edit" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                </a>
+                <a href="https://tiktok.com/@luisrod" target="_blank" rel="noopener" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                </a>
+                <a href="https://wa.me/521XXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <div class="footer__copy">© 2025 Luis Rodriguez · Editor de Video</div>
+            <div class="footer__links">
+                <a href="#portfolio">Portafolio</a>
+                <a href="#skills">Skills</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ══════════════════════════════════════════
+     MODAL
+══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+        <div class="modal-media" id="modalMedia"></div>
+        <div class="modal-body">
+            <div class="modal-meta">
+                <span class="modal-cat" id="modalCat"></span>
+                <button class="modal-close" id="modalCloseBtn" aria-label="Cerrar">✕ Cerrar</button>
+            </div>
+            <h3 class="modal-title" id="modalTitle"></h3>
+            <p class="modal-desc"  id="modalDesc"></p>
+        </div>
+    </div>
+</div>
+
+
+<button class="admin-trigger" id="adminTrigger" aria-hidden="true" tabindex="-1" title=""></button>
+
+<div class="admin-overlay" id="adminOverlay" role="dialog" aria-modal="true">
+    <div class="admin-box">
+        <div class="admin-head">
+            <h3>Panel de administración</h3>
+            <button class="admin-head-close" id="adminCloseBtn" aria-label="Cerrar">✕</button>
+        </div>
+        <div class="admin-body">
+
+            <!-- Login -->
+            <div id="loginSection">
+                <div class="login-box">
+                    <p>Ingresa tu contraseña para gestionar el portafolio</p>
+                    <input type="password" id="pwdInput" placeholder="••••••••" autocomplete="current-password">
+                    <div class="login-err" id="loginErr">Contraseña incorrecta.</div>
+                    <button class="btn-admin-add" id="loginBtn">Entrar</button>
+                </div>
+            </div>
+
+            <!-- Panel -->
+            <div id="adminPanel" style="display:none">
+                <div class="admin-tabs">
+                    <button class="admin-tab active" data-tab="add">🎬 Videos</button>
+                    <button class="admin-tab" data-tab="clients">👥 Clientes</button>
+                    <button class="admin-tab" data-tab="testimonials">⭐ Testimonios</button>
+                    <button class="admin-tab" data-tab="manage">📋 Gestionar</button>
+                </div>
+
+                <!-- Tab: Videos -->
+                <div id="tab-add">
+                    <div class="a-fg">
+                        <label>Link del video de YouTube</label>
+                        <input type="url" id="ytUrl" placeholder="youtube.com/watch?v=... o /shorts/...">
+                        <div class="hint">Funciona con videos normales, Shorts y links cortos (youtu.be)</div>
+                    </div>
+                    <div class="a-fg">
+                        <label>Título</label>
+                        <input type="text" id="ytTitle" placeholder="Nombre del video">
+                    </div>
+                    <div class="a-fg">
+                        <label>Descripción <span style="color:var(--text-3);font-weight:400">(opcional)</span></label>
+                        <textarea id="ytDesc" placeholder="Breve descripción del proyecto..."></textarea>
+                    </div>
+                    <div class="a-fg">
+                        <label>Categoría</label>
+                        <select id="ytCat">
+                            <option value="youtube">YouTube</option>
+                            <option value="publicidad">Publicidad</option>
+                            <option value="redes">Redes Sociales</option>
+                            <option value="educativo">Educativo</option>
+                        </select>
+                    </div>
+                    <button class="btn-admin-add" id="addYtBtn">Agregar video</button>
+                    <div class="success-msg" id="ytSuccess">¡Video agregado!</div>
+                </div>
+
+                <!-- Tab: Clientes -->
+                <div id="tab-clients" style="display:none">
+                    <div class="a-fg">
+                        <label>Nombre del cliente</label>
+                        <input type="text" id="clientName" placeholder="Ej: María González">
+                    </div>
+                    <div class="a-fg">
+                        <label>URL de foto <span style="color:var(--text-3);font-weight:400">(opcional — sube a imgur.com y pega el link)</span></label>
+                        <input type="url" id="clientPhoto" placeholder="https://i.imgur.com/...">
+                        <div class="hint">Si dejas vacío se mostrarán sus iniciales</div>
+                    </div>
+                    <button class="btn-admin-add" id="addClientBtn">Agregar cliente</button>
+                    <div class="success-msg" id="clientSuccess">¡Cliente agregado!</div>
+                    <div style="margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.25rem">
+                        <div style="font-size:0.78rem;font-weight:600;color:var(--text-3);margin-bottom:0.75rem">CLIENTES ACTUALES</div>
+                        <div class="admin-list" id="adminClientsList"></div>
+                    </div>
+                </div>
+
+                <!-- Tab: Testimonios -->
+                <div id="tab-testimonials" style="display:none">
+                    <div class="a-fg">
+                        <label>Nombre</label>
+                        <input type="text" id="testName" placeholder="Ej: Carlos Mendoza">
+                    </div>
+                    <div class="a-fg">
+                        <label>Rol o empresa</label>
+                        <input type="text" id="testRole" placeholder="Ej: Director de Marketing">
+                    </div>
+                    <div class="a-fg">
+                        <label>Testimonio</label>
+                        <textarea id="testQuote" placeholder="Lo que dijo de tu trabajo..."></textarea>
+                    </div>
+                    <div class="a-fg">
+                        <label>URL de foto <span style="color:var(--text-3);font-weight:400">(opcional)</span></label>
+                        <input type="url" id="testPhoto" placeholder="https://i.imgur.com/...">
+                    </div>
+                    <div class="a-fg">
+                        <label>Estrellas</label>
+                        <select id="testStars">
+                            <option value="5">★★★★★ — 5 estrellas</option>
+                            <option value="4">★★★★☆ — 4 estrellas</option>
+                            <option value="3">★★★☆☆ — 3 estrellas</option>
+                        </select>
+                    </div>
+                    <button class="btn-admin-add" id="addTestBtn">Agregar testimonio</button>
+                    <div class="success-msg" id="testSuccess">¡Testimonio agregado!</div>
+                    <div style="margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.25rem">
+                        <div style="font-size:0.78rem;font-weight:600;color:var(--text-3);margin-bottom:0.75rem">TESTIMONIOS ACTUALES</div>
+                        <div class="admin-list" id="adminTestimonialsList"></div>
+                    </div>
+                </div>
+
+                <!-- Tab: Gestionar videos -->
+                <div id="tab-manage" style="display:none">
+                    <div style="font-size:0.78rem;font-weight:600;color:var(--text-3);margin-bottom:0.75rem">VIDEOS EN EL PORTAFOLIO</div>
+                    <div class="admin-list" id="adminVideoList"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/icons.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
