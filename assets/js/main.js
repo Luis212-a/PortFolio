@@ -10,7 +10,7 @@
         youtube.com/shorts/JSiPee4PDko  → ytId: 'JSiPee4PDko'
 ══════════════════════════════════════════ */
 const VIDEOS = [
-    // { id:1, title:'Nombre del video', category:'redes', ytId:'XXXXXXXXXXX', description:'Descripción breve.' },
+       { id:1, title:'Reel Viral', category:'Redes', ytId:'JSiPee4PDko', description:'Descripción breve.' },
     // Categorías disponibles: youtube | publicidad | redes | educativo
 ];
 
