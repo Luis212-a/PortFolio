@@ -10,8 +10,9 @@
         youtube.com/shorts/JSiPee4PDko  → ytId: 'JSiPee4PDko'
 ══════════════════════════════════════════ */
 const VIDEOS = [
-       { id:1, title:'Reel Viral', category:'Redes', ytId:'JSiPee4PDko', description:'Descripción breve.' },
-       { id:1, title:'Animación Eintein', category:'YouTube', ytId:'Wpc2B8oC0is', description:'Descripción breve.' },
+       { id:1, title:'Reel Viral', category:'Redes', ytId:'JSiPee4PDko', description:'Reel Instagram.' },
+       { id:1, title:'Animación Einstein', category:'YouTube', ytId:'Wpc2B8oC0is', description:'Animación Basica De Entrada.' },
+       { id:1, title:'Animación Einstein Papel', category:'educativo', ytId:'5BeoFAVD8m8', description:'Animación Basica De Entrada Estilo Paper.' },
     // Categorías disponibles: youtube | publicidad | redes | educativo
 ];
 
