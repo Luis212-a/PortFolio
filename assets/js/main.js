@@ -11,6 +11,7 @@
 ══════════════════════════════════════════ */
 const VIDEOS = [
        { id:1, title:'Reel Viral', category:'Redes', ytId:'JSiPee4PDko', description:'Descripción breve.' },
+       { id:1, title:'Animación Eintein', category:'YouTube', ytId:'Wpc2B8oC0is', description:'Descripción breve.' },
     // Categorías disponibles: youtube | publicidad | redes | educativo
 ];
 
