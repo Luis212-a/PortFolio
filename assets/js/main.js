@@ -10,6 +10,7 @@
 
 // Videos base (fijos). Agrega más desde el panel admin ⚙️
 const BASE_VIDEOS = [
+   { id:1, title:'Mi video', category:'youtube', ytId:'ABC123', description:'...' },
     // Ejemplo — descomenta y rellena cuando tengas videos:
     // { id:1, title:'Nombre del video', category:'publicidad',
     //   ytId:'XXXXXXXXXXX', description:'Descripción del video.' }
