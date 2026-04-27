@@ -303,7 +303,7 @@
 }
 
 /* ══════════════════════════════════════════
-   CLIENTES — Carrusel infinito
+   CLIENTES — Carrusel infinito sin espacios
 ══════════════════════════════════════════ */
 .clients { background:var(--surface); overflow:hidden; }
 
@@ -314,73 +314,73 @@
 }
 .clients-cta__text {
     font-size:0.8rem; font-weight:700; letter-spacing:0.14em;
-    text-transform:uppercase; color:var(--text-3);
-    margin-bottom:0.5rem;
+    text-transform:uppercase; color:var(--text-3); margin-bottom:0.5rem;
 }
 .clients-cta__headline {
-    font-size:clamp(1.1rem, 2.5vw, 1.4rem); font-weight:700;
-    color:var(--text-1);
+    font-size:clamp(1.1rem, 2.5vw, 1.4rem); font-weight:700; color:var(--text-1);
 }
 .clients-cta__headline em { font-style:normal; color:var(--accent); }
 
-/* Track con fade en los bordes */
+/* Wrapper: fade en bordes, sin overflow */
 .clients-marquee-wrap {
-    position:relative;
-    mask-image:linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
-    -webkit-mask-image:linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    position:relative; overflow:hidden;
+    mask-image:linear-gradient(to right,
+        transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image:linear-gradient(to right,
+        transparent 0%, black 8%, black 92%, transparent 100%);
 }
 
-/* Animación scroll izquierda */
-@keyframes marquee-left {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+/* Track — flex sin gaps que rompan el loop */
+@keyframes marquee-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
-/* Animación scroll derecha */
-@keyframes marquee-right {
-    from { transform: translateX(-50%); }
-    to   { transform: translateX(0); }
-}
-
+/* El JS duplica los items suficientes veces.
+   El track siempre mide el doble de lo visible,
+   y la animación desplaza exactamente la mitad. */
 .clients-track {
-    display:flex; gap:2rem; width:max-content;
-    animation: marquee-left 28s linear infinite;
-    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 2.5rem;
+    padding: 0.75rem 0;
+    animation: marquee-scroll linear infinite;
+    /* duración se asigna por JS según la cantidad de clientes */
+    will-change: transform;
 }
 
-/* Pausa al pasar el mouse */
-.clients-marquee-wrap:hover .clients-track { animation-play-state:paused; }
+/* Pausa suave al hover */
+.clients-marquee-wrap:hover .clients-track {
+    animation-play-state: paused;
+}
 
+/* Cards */
 .client-card {
-    display:flex; flex-direction:column; align-items:center;
-    gap:0.65rem; width:90px; flex-shrink:0; cursor:default;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 0.65rem; flex-shrink: 0; width: 88px; cursor: default;
 }
 .client-avatar {
-    width:76px; height:76px; border-radius:50%;
-    overflow:hidden; border:2px solid var(--border);
-    background:var(--surface-3);
-    box-shadow:var(--shadow-md);
-    transition:all 0.3s var(--ease);
-    display:flex; align-items:center; justify-content:center;
+    width: 78px; height: 78px; border-radius: 50%;
+    overflow: hidden; border: 2px solid var(--border);
+    background: var(--surface-3); box-shadow: var(--shadow-md);
+    transition: all 0.3s var(--ease);
+    display: flex; align-items: center; justify-content: center;
 }
-.client-avatar img {
-    width:100%; height:100%; object-fit:cover; display:block;
-}
-.client-avatar__initials {
-    font-size:1.3rem; font-weight:700; color:var(--accent); line-height:1;
-}
+.client-avatar img { width:100%; height:100%; object-fit:cover; display:block; }
+.client-avatar__initials { font-size:1.3rem; font-weight:700; color:var(--accent); line-height:1; }
 .client-avatar__placeholder {
     width:100%; height:100%;
     background:linear-gradient(135deg, var(--surface-2), var(--surface-3));
     display:flex; align-items:center; justify-content:center;
 }
 .client-card:hover .client-avatar {
-    transform:scale(1.1); border-color:var(--accent);
-    box-shadow:0 0 0 4px var(--accent-glow), var(--shadow-md);
+    transform: scale(1.1); border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-glow), var(--shadow-md);
 }
 .client-name {
-    font-size:0.78rem; font-weight:600; color:var(--text-2);
-    text-align:center; line-height:1.3; white-space:nowrap;
+    font-size: 0.78rem; font-weight: 600; color: var(--text-2);
+    text-align: center; line-height: 1.3; white-space: nowrap;
 }
 
 /* ══════════════════════════════════════════
