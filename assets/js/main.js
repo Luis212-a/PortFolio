@@ -11,8 +11,8 @@
 ══════════════════════════════════════════ */
 const VIDEOS = [
        { id:1, title:'Reel Viral', category:'Redes', ytId:'JSiPee4PDko', description:'Reel Instagram.' },
-       { id:1, title:'Animación Einstein', category:'YouTube', ytId:'Wpc2B8oC0is', description:'Animación Basica De Entrada.' },
-       { id:1, title:'Animación Einstein Papel', category:'educativo', ytId:'5BeoFAVD8m8', description:'Animación Basica De Entrada Estilo Paper.' },
+       { id:2, title:'Animación Einstein', category:'YouTube', ytId:'Wpc2B8oC0is', description:'Animación Basica De Entrada.' },
+       { id:3, title:'Animación Einstein Papel', category:'educativo', ytId:'5BeoFAVD8m8', description:'Animación Basica De Entrada Estilo Paper.' },
     // Categorías disponibles: youtube | publicidad | redes | educativo
 ];
 
