@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Landing Pages que Convierten — Diseño profesional y rápido para creadores de contenido y negocios digitales.">
+    <meta name="theme-color" content="#0e0d0b">
+    <title>Landing Pages que Convierten — Ángel Alcántara</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/tokens.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <style>
+        /* ══════════════════════════════════════════
+           LANDING PAGES — Custom Styles
+        ══════════════════════════════════════════ */
+
+        .lp-hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 1.5rem;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--surface) 100%);
+            overflow: hidden;
+        }
+
+        .lp-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(200,169,110,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .lp-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(200,169,110,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite reverse;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .lp-hero .container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .lp-hero__eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: var(--accent-glow);
+            padding: 0.5rem 1.2rem;
+            border-radius: var(--r-full);
+            margin-bottom: 1.5rem;
+            animation: slideUp 0.6s var(--ease);
+        }
+
+        .lp-hero__title {
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-1);
+            animation: slideUp 0.6s 0.1s var(--ease) backwards;
+        }
+
+        .lp-hero__title em {
+            font-style: normal;
+            color: var(--accent);
+            position: relative;
+        }
+
+        .lp-hero__title em::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+            border-radius: 2px;
+            animation: expandWidth 0.8s 0.3s var(--ease) backwards;
+        }
+
+        @keyframes expandWidth {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .lp-hero__subtitle {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: var(--text-2);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+            animation: slideUp 0.6s 0.2s var(--ease) backwards;
+        }
+
+        .lp-hero__cta {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideUp 0.6s 0.3s var(--ease) backwards;
+        }
+
+        /* ══════════════════════════════════════════ */
+        .lp-features {
+            padding: 6rem 1.5rem;
+            background: var(--bg);
+        }
+
+        .lp-features .container {
+            max-width: 1200px;
+        }
+
+        .lp-features__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .lp-feature-card {
+            background: var(--surface);
+            border-radius: var(--r-lg);
+            padding: 2.5rem 2rem;
+            border: 2px solid var(--border);
+            transition: all 0.35s var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lp-feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            transition: left 0.6s var(--ease);
+        }
+
+        .lp-feature-card:hover::before {
+            left: 100%;
+        }
+
+        .lp-feature-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(200,169,110,0.15);
+        }
+
+        .lp-feature-card__icon {
+            font-size: 3rem;
+            margin-bottom: 1.25rem;
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .lp-feature-card:nth-child(2) .lp-feature-card__icon { animation-delay: 0.2s; }
+        .lp-feature-card:nth-child(3) .lp-feature-card__icon { animation-delay: 0.4s; }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .lp-feature-card__title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-1);
+            margin-bottom: 0.75rem;
+        }
+
+        .lp-feature-card__desc {
+            color: var(--text-2);
+            font-size: 0.95rem;
+            line-height: 1.75;
+            margin-bottom: 1rem;
+        }
+
+        .lp-feature-card__list {
+            font-size: 0.85rem;
+            color: var(--text-3);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .lp-feature-card__list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lp-feature-card__list li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* ══════════════════════════════════════════ */
+        .lp-process {
+            padding: 6rem 1.5rem;
+            background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+        }
+
+        .lp-process__steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3.5rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .lp-step {
+            position: relative;
+            text-align: center;
+            animation: fadeInUp 0.6s var(--ease) backwards;
+        }
+
+        .lp-step:nth-child(1) { animation-delay: 0s; }
+        .lp-step:nth-child(2) { animation-delay: 0.2s; }
+        .lp-step:nth-child(3) { animation-delay: 0.4s; }
+        .lp-step:nth-child(4) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .lp-step__number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--accent-glow);
+            border: 3px solid var(--accent);
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .lp-step__title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-1);
+            margin-bottom: 0.75rem;
+        }
+
+        .lp-step__desc {
+            font-size: 0.9rem;
+            color: var(--text-2);
+            line-height: 1.6;
+        }
+
+        .lp-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -35px;
+            top: 30px;
+            font-size: 2rem;
+            color: var(--accent);
+            opacity: 0.3;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .lp-step:not(:last-child)::after { display: none; }
+        }
+
+        /* ══════════════════════════════════════════ */
+        .lp-cta {
+            padding: 6rem 1.5rem;
+            background: var(--accent);
+            color: #0e0d0b;
+            text-align: center;
+        }
+
+        .lp-cta__title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            animation: slideUp 0.6s var(--ease);
+        }
+
+        .lp-cta__subtitle {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.95;
+            line-height: 1.7;
+            animation: slideUp 0.6s 0.1s var(--ease) backwards;
+        }
+
+        .lp-cta__btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: #0e0d0b;
+            color: var(--accent);
+            border-radius: var(--r-full);
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s var(--ease);
+            border: 2px solid #0e0d0b;
+            text-decoration: none;
+            animation: slideUp 0.6s 0.2s var(--ease) backwards;
+        }
+
+        .lp-cta__btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+
+        /* ══════════════════════════════════════════ */
+        .section-header.lp-section-header {
+            margin-bottom: 2rem;
+        }
+
+        .lp-section-header__label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: var(--accent-glow);
+            padding: 0.5rem 1.2rem;
+            border-radius: var(--r-full);
+            margin-bottom: 1rem;
+            animation: slideUp 0.6s var(--ease);
+        }
+
+        .lp-section-header__title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: var(--text-1);
+            margin-bottom: 1rem;
+            animation: slideUp 0.6s 0.1s var(--ease) backwards;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     NAV
+══════════════════════════════════════════ -->
+<header class="nav" id="nav">
+    <div class="nav__inner">
+        <a href="index.html" class="nav__logo">Ángel <span>Alcántara</span></a>
+
+        <!-- Desktop links -->
+        <nav class="nav__links" aria-label="Navegación principal">
+            <a href="index.html#portfolio">Portafolio</a>
+            <a href="landingpages.html" style="color:var(--accent); border-bottom:2px solid var(--accent);">Landing Pages</a>
+            <a href="index.html#skills">Skills</a>
+            <a href="index.html#contacto">Contacto</a>
+        </nav>
+
+        <!-- Desktop social -->
+        <div class="nav__social">
+            <a href="https://www.youtube.com/@Angel.Alc%C3%A1ntara-Edit" target="_blank" rel="noopener" aria-label="YouTube">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/_angel.alcantara__/" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@Angel.Alc%C3%A1ntara-Edit" target="_blank" rel="noopener" aria-label="TikTok">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </a>
+        </div>
+
+        <!-- Hamburger -->
+        <button class="nav__toggle" id="navToggle" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <nav class="nav__mobile" id="navMobile">
+        <a href="index.html#portfolio">Portafolio</a>
+        <a href="landingpages.html">Landing Pages</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#contacto">Contacto</a>
+    </nav>
+</header>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="lp-hero">
+    <div class="container">
+        <div class="lp-hero__eyebrow">Solución Profesional</div>
+
+        <h1 class="lp-hero__title">
+            Landing Pages que <em>Convierten</em>
+        </h1>
+
+        <p class="lp-hero__subtitle">
+            Diseño profesional, desarrollo rápido y resultados reales. 
+            Páginas de venta optimizadas para capturar leads y transformar 
+            visitantes en clientes de tu servicio.
+        </p>
+
+        <div class="lp-hero__cta">
+            <a href="#cta" class="btn btn--primary">Crear mi Landing Page</a>
+            <a href="index.html#contacto" class="btn btn--outline">Hablar con Ángel</a>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CARACTERÍSTICAS
+══════════════════════════════════════════ -->
+<section class="lp-features">
+    <div class="container">
+        <div class="lp-section-header">
+            <div class="lp-section-header__label">Por Qué Elegirnos</div>
+            <h2 class="lp-section-header__title">Lo que te diferencia</h2>
+        </div>
+
+        <div class="lp-features__grid">
+            <div class="lp-feature-card">
+                <div class="lp-feature-card__icon">⚡</div>
+                <div class="lp-feature-card__title">Entrega Ultra Rápida</div>
+                <p class="lp-feature-card__desc">Tu landing page lista en 48-72 horas. Sin esperas, sin procrastinación.</p>
+                <ul class="lp-feature-card__list">
+                    <li>Diseño profesional</li>
+                    <li>Desarrollo limpio</li>
+                    <li>Testing incluido</li>
+                </ul>
+            </div>
+
+            <div class="lp-feature-card">
+                <div class="lp-feature-card__icon">📊</div>
+                <div class="lp-feature-card__title">Optimizado para Conversión</div>
+                <p class="lp-feature-card__desc">Cada elemento está pensado para guiar al visitante hacia la acción.</p>
+                <ul class="lp-feature-card__list">
+                    <li>Copywriting persuasivo</li>
+                    <li>CTA estratégicos</li>
+                    <li>UX/UI centrado en conversión</li>
+                </ul>
+            </div>
+
+            <div class="lp-feature-card">
+                <div class="lp-feature-card__icon">🔗</div>
+                <div class="lp-feature-card__title">Tech Stack Profesional</div>
+                <p class="lp-feature-card__desc">Integración completa con tu ecosistema de herramientas.</p>
+                <ul class="lp-feature-card__list">
+                    <li>Email marketing</li>
+                    <li>Analytics & tracking</li>
+                    <li>CRM integration</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PROCESO
+══════════════════════════════════════════ -->
+<section class="lp-process">
+    <div class="container">
+        <div class="lp-section-header" style="text-align: center;">
+            <div class="lp-section-header__label">Cómo Funciona</div>
+            <h2 class="lp-section-header__title">El Proceso en 4 Pasos</h2>
+        </div>
+
+        <div class="lp-process__steps">
+            <div class="lp-step">
+                <div class="lp-step__number">1</div>
+                <div class="lp-step__title">Entendimiento</div>
+                <p class="lp-step__desc">Conversación sobre tu negocio, audiencia y objetivos.</p>
+            </div>
+
+            <div class="lp-step">
+                <div class="lp-step__number">2</div>
+                <div class="lp-step__title">Diseño</div>
+                <p class="lp-step__desc">Prototipo funcional alineado con tu marca.</p>
+            </div>
+
+            <div class="lp-step">
+                <div class="lp-step__number">3</div>
+                <div class="lp-step__title">Desarrollo</div>
+                <p class="lp-step__desc">Código limpio, rápido y optimizado para conversión.</p>
+            </div>
+
+            <div class="lp-step">
+                <div class="lp-step__number">4</div>
+                <div class="lp-step__title">Go Live</div>
+                <p class="lp-step__desc">Publicación, testing y listo para generar leads.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CTA FINAL
+══════════════════════════════════════════ -->
+<section class="lp-cta" id="cta">
+    <div class="container" style="max-width: 800px;">
+        <h2 class="lp-cta__title">¿Listo para una Landing Page que Venda?</h2>
+        <p class="lp-cta__subtitle">
+            Tu próxima landing page está a 48 horas. Sin promesas falsas, 
+            solo trabajo profesional que convierte.
+        </p>
+        <a href="index.html#contacto" class="lp-cta__btn">
+            Empezar Ahora →
+        </a>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div class="footer__brand">
+                <div class="footer__logo">Ángel <span>Alcántara</span></div>
+                <p class="footer__tagline">Editor de video profesional + Diseñador de landing pages. Especializado en motion graphics, color grading, edición para redes sociales y páginas que convierten.</p>
+            </div>
+            <div class="footer__social">
+                <a href="https://www.youtube.com/@Angel.Alc%C3%A1ntara-Edit" target="_blank" rel="noopener" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/_angel.alcantara__/" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@Angel.Alc%C3%A1ntara-Edit" target="_blank" rel="noopener" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <div class="footer__copy">© 2026 Ángel Alcántara · Landing Pages & Edición de Video</div>
+            <div class="footer__links">
+                <a href="index.html#portfolio">Portafolio</a>
+                <a href="landingpages.html">Landing Pages</a>
+                <a href="index.html#contacto">Contacto</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="assets/js/icons.js"></script>
+<script>
+    // Nav mobile toggle
+    const toggle = document.getElementById('navToggle');
+    const mobile = document.getElementById('navMobile');
+    toggle.addEventListener('click', () => {
+        toggle.classList.toggle('open');
+        mobile.classList.toggle('open');
+    });
+    mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        toggle.classList.remove('open');
+        mobile.classList.remove('open');
+    }));
+
+    // Smooth scroll for CTA button
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (e) => {
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+</body>
+</html>
