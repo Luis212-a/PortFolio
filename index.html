@@ -1,395 +1,161 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ángel Alcántara — Editor de Video profesional + Landing Pages. Motion graphics, color grading y edición para YouTube, publicidad, redes sociales y landing pages que convierten.">
-    <meta name="theme-color" content="#0e0d0b">
-    <title>Ángel Alcántara — Editor de Video & Landing Pages</title>
+/* ============================================================
+   tokens.css — Design tokens & reset
+   Luis Rod · Video Editor Portfolio
+   ============================================================ */
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+img, video { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/tokens.css">
-    <link rel="stylesheet" href="assets/css/components.css">
-</head>
-<body>
+/* ── LIGHT MODE ── */
+:root {
+    --accent:        #c8a96e;
+    --accent-dim:    #a8863e;
+    --accent-light:  #e8c98e;
+    --accent-glow:   rgba(200,169,110,0.15);
+    --accent-glow2:  rgba(200,169,110,0.08);
 
-<!-- ══════════════════════════════════════════
-     NAV
-══════════════════════════════════════════ -->
-<header class="nav" id="nav">
-    <div class="nav__inner">
-        <a href="#" class="nav__logo">Angel <span>Alcántara</span></a>
+    --bg:            #f7f5f2;
+    --surface:       #ffffff;
+    --surface-2:     #f0ede8;
+    --surface-3:     #e8e3dc;
 
-        <!-- Desktop links -->
-        <nav class="nav__links" aria-label="Navegación principal">
-            <a href="#portfolio">Portafolio</a>
-            <a href="landingpages.html">Landing Pages</a>
-            <a href="#skills">Skills</a>
-            <a href="#clientes">Clientes</a>
-            <a href="#testimonios">Testimonios</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
+    --text-1:        #1a1814;
+    --text-2:        #4a453e;
+    --text-3:        #908880;
 
-        <!-- Desktop social -->
-        <div class="nav__social">
-            <a href="https://www.youtube.com/@Angel.Alc%C3%A1ntara-Edit" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/_angel.alcantara__/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-            </a>
-            <a href="https://www.youtube.com/@Angel.Alc%C3%A1ntara-Edit" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-            </a>
-        </div>
+    --border:        rgba(26,24,20,0.09);
+    --border-2:      rgba(26,24,20,0.16);
 
-        <!-- Hamburger -->
-        <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
+    --nav-bg:        rgba(247,245,242,0.95);
 
-    <!-- Mobile menu -->
-    <nav class="nav__mobile" id="navMobile" aria-label="Menú móvil">
-        <a href="#portfolio">Portafolio</a>
-        <a href="landingpages.html">Landing Pages</a>
-        <a href="#skills">Skills</a>
-        <a href="#clientes">Clientes</a>
-        <a href="#testimonios">Testimonios</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
-</header>
+    --shadow-sm:     0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md:     0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+    --shadow-lg:     0 16px 48px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.06);
+    --shadow-xl:     0 24px 64px rgba(0,0,0,0.12);
 
-<!-- ══════════════════════════════════════════
-     HERO
-══════════════════════════════════════════ -->
-<section class="hero" aria-label="Presentación">
-    <div class="hero__bg" role="img" aria-hidden="true"></div>
-    <div class="hero__overlay" aria-hidden="true"></div>
+    --r-xs:  4px;
+    --r-sm:  8px;
+    --r-md:  12px;
+    --r-lg:  20px;
+    --r-xl:  32px;
+    --r-full: 9999px;
 
-    <div class="container">
-        <div class="hero__eyebrow">Editor de Video + Web Designer</div>
+    --ease:        cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-        <h1 class="hero__title">
-            Cada frame<br>cuenta una <em>historia</em>
-        </h1>
+    --font: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
 
-        <p class="hero__subtitle">
-            Motion graphics, color grading y edición profesional
-            para marcas, creadores y agencias que quieren destacar.
-            
-            Creador de Landing Pages para Negocios y Marcas
-        </p>
+/* ── DARK MODE ── */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg:            #0e0d0b;
+        --surface:       #181612;
+        --surface-2:     #211f1a;
+        --surface-3:     #2a2820;
 
-        <div class="hero__cta">
-            <a href="#portfolio" class="btn btn--primary">Ver mi trabajo</a>
-            <a href="#contacto"  class="btn btn--outline" style="color:#f2ede4;border-color:rgba(242,237,228,0.35)">Hablemos</a>
-        </div>
-    </div>
+        --text-1:        #f0ece4;
+        --text-2:        #b0a898;
+        --text-3:        #706858;
 
-    <div class="hero__scroll" aria-hidden="true">Scroll</div>
-</section>
+        --border:        rgba(240,236,228,0.07);
+        --border-2:      rgba(240,236,228,0.13);
 
-<!-- ══════════════════════════════════════════
-     PORTFOLIO
-══════════════════════════════════════════ -->
-<section class="portfolio" id="portfolio">
-    <div class="container">
+        --nav-bg:        rgba(14,13,11,0.95);
 
-        <div class="section-header anim-up">
-            <div class="section-header__label">Portafolio</div>
-            <h2 class="section-header__title">Trabajos recientes</h2>
-            <div class="divider"></div>
-        </div>
-
-        <!-- Slider destacado -->
-        <div class="slider-wrap anim-up">
-            <div class="slider-track" id="sliderTrack"></div>
-        </div>
-        <div class="slider-controls anim-up">
-            <button class="s-btn" id="prevBtn" aria-label="Anterior">&#8592;</button>
-            <div class="dots" id="dots"></div>
-            <button class="s-btn" id="nextBtn" aria-label="Siguiente">&#8594;</button>
-        </div>
-
-        <!-- Filtros y grid -->
-        <div class="filters" id="filters" style="margin-top:3.5rem;" role="group" aria-label="Filtrar por categoría"></div>
-        <div class="videos-grid" id="videosGrid" role="list"></div>
-
-    </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     SKILLS
-══════════════════════════════════════════ -->
-<section class="skills" id="skills">
-    <div class="container">
-        <div class="section-header anim-up">
-            <div class="section-header__label">Herramientas</div>
-            <h2 class="section-header__title">Skills & Software</h2>
-            <p class="section-header__sub">Las herramientas que uso en cada proyecto para garantizar resultados de nivel profesional.</p>
-            <div class="divider"></div>
-        </div>
-        <div class="skills-grid" id="skillsGrid"></div>
-    </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     CLIENTES
-══════════════════════════════════════════ -->
-<section class="clients" id="clientes">
-    <div class="container">
-        <div class="section-header anim-up">
-            <div class="section-header__label">Clientes</div>
-            <h2 class="section-header__title">Con quienes he trabajado</h2>
-            <div class="divider"></div>
-        </div>
-    </div>
-
-    <!-- Carrusel sin container para que llegue a los bordes -->
-    <div class="clients-marquee-wrap" id="clientsMarquee">
-        <div class="clients-track" id="clientsGrid"></div>
-    </div>
-
-    <div class="container">
-        <div class="clients-cta anim-up">
-            <div class="clients-cta__text">¿Quieres trabajar conmigo?</div>
-            <div class="clients-cta__headline">Tú puedes ser el <em>próximo</em></div>
-        </div>
-    </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     TESTIMONIOS
-══════════════════════════════════════════ -->
-<section class="testimonials" id="testimonios">
-    <div class="container">
-        <div class="section-header anim-up">
-            <div class="section-header__label">Testimonios</div>
-            <h2 class="section-header__title">Lo que dicen de mi trabajo</h2>
-            <div class="divider"></div>
-        </div>
-        <div class="testimonials-grid" id="testimonialsGrid"></div>
-    </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     CONTACTO
-══════════════════════════════════════════ -->
-<section class="contact" id="contacto" style="background:var(--bg);">
-    <div class="container">
-
-        <div class="section-header anim-up">
-            <div class="section-header__label">Contacto</div>
-            <h2 class="section-header__title">¿Tienes un proyecto?</h2>
-            <p class="section-header__sub">Escríbeme por cualquiera de estas redes y hablamos. Te respondo en menos de 24 horas.</p>
-            <div class="divider"></div>
-        </div>
-
-        <!-- 3 tarjetas simétricas centradas -->
-        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:860px; margin:0 auto 3rem;" class="anim-up contact-cards-grid">
-
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/_angel.alcantara__/" target="_blank" rel="noopener"
-               style="display:flex; flex-direction:column; align-items:center; gap:1rem;
-                      background:var(--surface); border:2px solid var(--border);
-                      border-radius:var(--r-lg); padding:2rem 1.5rem; text-decoration:none;
-                      transition:all 0.3s var(--ease);"
-               onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(200,169,110,0.15)'"
-               onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
-                <div style="width:56px;height:56px;border-radius:var(--r-md);background:var(--accent-glow);border:2px solid rgba(200,169,110,0.3);display:flex;align-items:center;justify-content:center;color:var(--accent);">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-                </div>
-                <div style="text-align:center;">
-                    <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:0.35rem;">Instagram</div>
-                    <div style="font-size:0.95rem;font-weight:600;color:var(--text-1);">@_angel.alcantara__</div>
-                </div>
-                <div style="font-size:0.78rem;color:var(--accent);font-weight:600;margin-top:auto;">Enviar DM →</div>
-            </a>
-
-            <!-- YouTube -->
-            <a href="https://www.youtube.com/@Angel.Alc%C3%A1ntara-Edit" target="_blank" rel="noopener"
-               style="display:flex; flex-direction:column; align-items:center; gap:1rem;
-                      background:var(--surface); border:2px solid var(--border);
-                      border-radius:var(--r-lg); padding:2rem 1.5rem; text-decoration:none;
-                      transition:all 0.3s var(--ease);"
-               onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(200,169,110,0.15)'"
-               onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
-                <div style="width:56px;height:56px;border-radius:var(--r-md);background:var(--accent-glow);border:2px solid rgba(200,169,110,0.3);display:flex;align-items:center;justify-content:center;color:var(--accent);">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </div>
-                <div style="text-align:center;">
-                    <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:0.35rem;">YouTube</div>
-                    <div style="font-size:0.95rem;font-weight:600;color:var(--text-1);">@Angel.Alcántara</div>
-                </div>
-                <div style="font-size:0.78rem;color:var(--accent);font-weight:600;margin-top:auto;">Ver canal →</div>
-            </a>
-
-            <!-- TikTok -->
-            <a href="https://www.youtube.com/@Angel.Alc%C3%A1ntara-Edit" target="_blank" rel="noopener"
-               style="display:flex; flex-direction:column; align-items:center; gap:1rem;
-                      background:var(--surface); border:2px solid var(--border);
-                      border-radius:var(--r-lg); padding:2rem 1.5rem; text-decoration:none;
-                      transition:all 0.3s var(--ease);"
-               onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(200,169,110,0.15)'"
-               onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
-                <div style="width:56px;height:56px;border-radius:var(--r-md);background:var(--accent-glow);border:2px solid rgba(200,169,110,0.3);display:flex;align-items:center;justify-content:center;color:var(--accent);">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-                </div>
-                <div style="text-align:center;">
-                    <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:0.35rem;">TikTok</div>
-                    <div style="font-size:0.95rem;font-weight:600;color:var(--text-1);">@AngelAlcantara</div>
-                </div>
-                <div style="font-size:0.78rem;color:var(--accent);font-weight:600;margin-top:auto;">Ver perfil →</div>
-            </a>
-
-        </div>
-
-        <!-- CTA final centrado -->
-        <div style="text-align:center; padding:2.5rem; background:var(--surface); border-radius:var(--r-lg); border:1px solid var(--border); max-width:600px; margin:0 auto;" class="anim-up">
-            <h3 style="font-size:1.4rem; font-weight:700; margin-bottom:0.75rem; color:var(--text-1);">¿Listo para empezar?</h3>
-            <p style="color:var(--text-2); font-size:0.93rem; margin-bottom:1.75rem; line-height:1.7;">Escríbeme por Instagram al DM y hablamos de tu proyecto. Respondo en menos de 24 horas.</p>
-            <a href="https://www.instagram.com/_angel.alcantara__/" target="_blank" rel="noopener" class="btn btn--primary" style="font-size:1rem; padding:0.85rem 2.5rem;">
-                Escribir al DM de Instagram →
-            </a>
-        </div>
-
-    </div>
-</section>
-
-<style>
-@media (max-width: 640px) {
-    .contact-cards-grid {
-        grid-template-columns: 1fr !important;
+        --shadow-sm:     0 1px 3px rgba(0,0,0,0.3);
+        --shadow-md:     0 4px 12px rgba(0,0,0,0.4);
+        --shadow-lg:     0 16px 48px rgba(0,0,0,0.5);
+        --shadow-xl:     0 24px 64px rgba(0,0,0,0.6);
     }
 }
-</style>
 
-<!-- ══════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════ -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer__grid">
-            <div class="footer__brand">
-                <div class="footer__logo">Ángel <span>Alcántara</span></div>
-                <p class="footer__tagline">Editor de video profesional + Diseñador de landing pages. Especializado en motion graphics, color grading, edición para redes sociales y páginas que convierten.</p>
-            </div>
-            <div class="footer__social">
-                <a href="https://www.youtube.com/@Angel.Alc%C3%A1ntara-Edit" target="_blank" rel="noopener" aria-label="YouTube">
-                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </a>
-                <a href="https://www.instagram.com/_angel.alcantara__/" target="_blank" rel="noopener" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-                </a>
-                <a href="https://www.youtube.com/@Angel.Alc%C3%A1ntara-Edit" target="_blank" rel="noopener" aria-label="TikTok">
-                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-                </a>
-            </div>
-        </div>
+/* ── BASE ── */
+html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
+body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text-1);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
-        <div class="footer__bottom">
-            <div class="footer__copy">© 2026 Ángel Alcántara · Editor de Video · Landing Pages</div>
-            <div class="footer__links">
-                <a href="#portfolio">Portafolio</a>
-                <a href="landingpages.html">Landing Pages</a>
-                <a href="#contacto">Contacto</a>
-            </div>
-        </div>
-    </div>
-</footer>
+/* ── TYPOGRAPHY ── */
+h1 { font-size: clamp(2.2rem, 5.5vw, 3.8rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; }
+h3 { font-size: 1.15rem; font-weight: 600; line-height: 1.4; }
+h4 { font-size: 0.95rem; font-weight: 600; }
+p  { color: var(--text-2); line-height: 1.75; }
 
-<!-- ══════════════════════════════════════════
-     MODAL
-══════════════════════════════════════════ -->
-<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-box">
-        <div class="modal-media" id="modalMedia"></div>
-        <div class="modal-body">
-            <div class="modal-meta">
-                <span class="modal-cat" id="modalCat"></span>
-                <button class="modal-close" id="modalCloseBtn" aria-label="Cerrar">✕ Cerrar</button>
-            </div>
-            <h3 class="modal-title" id="modalTitle"></h3>
-            <p class="modal-desc"  id="modalDesc"></p>
-        </div>
-    </div>
-</div>
+/* ── LAYOUT ── */
+.container { max-width: 1160px; margin: 0 auto; padding: 0 1.5rem; }
+section     { padding: 6rem 0; }
 
+/* ── ANIMATIONS ── */
+@keyframes fadeUp   { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeLeft { from { opacity:0; transform:translateX(-28px);} to { opacity:1; transform:translateX(0); } }
+@keyframes fadeRight{ from { opacity:0; transform:translateX(28px); } to { opacity:1; transform:translateX(0); } }
+@keyframes scaleIn  { from { opacity:0; transform:scale(0.92);      } to { opacity:1; transform:scale(1);    } }
+@keyframes navSlide { from { transform:translateY(-100%); opacity:0;} to { transform:translateY(0); opacity:1; } }
+@keyframes spin     { to   { transform: rotate(360deg); } }
 
-<button class="admin-trigger" id="adminTrigger" aria-hidden="true" tabindex="-1" title=""></button>
+.anim-up    { opacity:0; }
+.anim-left  { opacity:0; }
+.anim-right { opacity:0; }
+.anim-scale { opacity:0; }
+.anim-up.on    { animation: fadeUp    0.65s var(--ease) forwards; }
+.anim-left.on  { animation: fadeLeft  0.65s var(--ease) forwards; }
+.anim-right.on { animation: fadeRight 0.65s var(--ease) forwards; }
+.anim-scale.on { animation: scaleIn   0.65s var(--ease) forwards; }
 
-<div class="admin-overlay" id="adminOverlay" role="dialog" aria-modal="true">
-    <div class="admin-box">
-        <div class="admin-head">
-            <h3>Panel de administración</h3>
-            <button class="admin-head-close" id="adminCloseBtn" aria-label="Cerrar">✕</button>
-        </div>
-        <div class="admin-body">
+/* ── SECTION HEADER ── */
+.section-header { text-align:center; margin-bottom:3.5rem; }
+.section-header__label {
+    display:inline-block; font-size:0.72rem; font-weight:700;
+    letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--accent); margin-bottom:0.75rem;
+}
+.section-header__title { margin-bottom:0.75rem; color:var(--text-1); }
+.section-header__sub   { color:var(--text-2); max-width:480px; margin:0 auto; font-size:0.95rem; }
+.divider {
+    width:40px; height:3px; background:var(--accent);
+    border-radius:2px; margin:1rem auto 0;
+}
 
-            <!-- Login -->
-            <div id="loginSection">
-                <div class="login-box">
-                    <p>Ingresa tu contraseña para gestionar el portafolio</p>
-                    <input type="password" id="pwdInput" placeholder="••••••••" autocomplete="current-password">
-                    <div class="login-err" id="loginErr">Contraseña incorrecta.</div>
-                    <button class="btn-admin-add" id="loginBtn">Entrar</button>
-                </div>
-            </div>
+/* ── BUTTONS ── */
+.btn {
+    display:inline-flex; align-items:center; gap:0.5rem;
+    padding:0.75rem 1.75rem; border-radius:var(--r-full);
+    font-size:0.9rem; font-weight:600;
+    transition:all 0.25s var(--ease); border:2px solid transparent;
+    white-space:nowrap;
+}
+.btn--primary {
+    background:var(--accent); color:#0e0d0b;
+    box-shadow:0 4px 20px var(--accent-glow);
+}
+.btn--primary:hover {
+    background:var(--accent-light); transform:translateY(-2px);
+    box-shadow:0 8px 32px rgba(200,169,110,0.3);
+}
+.btn--outline {
+    border-color:var(--border-2); color:var(--text-1); background:transparent;
+}
+.btn--outline:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
+.btn--ghost {
+    color:var(--text-2); padding:0.5rem 1rem; font-size:0.85rem;
+}
+.btn--ghost:hover { color:var(--accent); }
 
-            <!-- Panel -->
-            <div id="adminPanel" style="display:none">
-                <div class="admin-tabs">
-                    <button class="admin-tab active" data-tab="manage">🎬 Videos</button>
-                    <button class="admin-tab" data-tab="clients">👥 Clientes</button>
-                    <button class="admin-tab" data-tab="testimonials">⭐ Testimonios</button>
-                </div>
-
-                <!-- Tab: Videos -->
-                <div id="tab-manage">
-                    <div style="background:var(--accent-glow2);border:1px solid rgba(200,169,110,0.25);border-radius:var(--r-md);padding:1rem 1.1rem;margin-bottom:1rem;">
-                        <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;">¿Cómo agregar un video?</div>
-                        <ol style="font-size:0.82rem;color:var(--text-2);line-height:2.1;padding-left:1.1rem;margin:0;">
-                            <li>Copia el ID del video:<br><span style="color:var(--text-3);font-size:0.74rem">youtube.com/watch?v=<b style="color:var(--accent)">XXXXXXXXXXX</b></span></li>
-                            <li>Ve a GitHub → <code style="background:var(--surface-3);padding:0.1rem 0.35rem;border-radius:3px;font-size:0.74rem">assets/js/main.js</code></li>
-                            <li>Edita el array <code style="background:var(--surface-3);padding:0.1rem 0.35rem;border-radius:3px;font-size:0.74rem">VIDEOS</code> al inicio del archivo</li>
-                            <li>Commit → en 1 min aparece para todos ✅</li>
-                        </ol>
-                    </div>
-                    <div style="font-size:0.72rem;font-weight:700;color:var(--text-3);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.09em;">Videos en el portafolio</div>
-                    <div class="admin-list" id="adminVideoList"></div>
-                </div>
-
-                <!-- Tab: Clientes -->
-                <div id="tab-clients" style="display:none">
-                    <div style="background:var(--accent-glow2);border:1px solid rgba(200,169,110,0.25);border-radius:var(--r-md);padding:1rem 1.1rem;margin-bottom:1rem;font-size:0.82rem;color:var(--text-2);line-height:1.75;">
-                        Edita el array <code style="background:var(--surface-3);padding:0.1rem 0.35rem;border-radius:3px;font-size:0.74rem">CLIENTS</code> en <code style="background:var(--surface-3);padding:0.1rem 0.35rem;border-radius:3px;font-size:0.74rem">main.js</code> para agregar o cambiar clientes.
-                    </div>
-                    <div style="font-size:0.72rem;font-weight:700;color:var(--text-3);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.09em;">Clientes actuales</div>
-                    <div class="admin-list" id="adminClientsList"></div>
-                </div>
-
-                <!-- Tab: Testimonios -->
-                <div id="tab-testimonials" style="display:none">
-                    <div style="background:var(--accent-glow2);border:1px solid rgba(200,169,110,0.25);border-radius:var(--r-md);padding:1rem 1.1rem;margin-bottom:1rem;font-size:0.82rem;color:var(--text-2);line-height:1.75;">
-                        Edita el array <code style="background:var(--surface-3);padding:0.1rem 0.35rem;border-radius:3px;font-size:0.74rem">TESTIMONIALS</code> en <code style="background:var(--surface-3);padding:0.1rem 0.35rem;border-radius:3px;font-size:0.74rem">main.js</code> para agregar o cambiar testimonios.
-                    </div>
-                    <div style="font-size:0.72rem;font-weight:700;color:var(--text-3);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.09em;">Testimonios actuales</div>
-                    <div class="admin-list" id="adminTestimonialsList"></div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<!-- Scripts -->
-<script src="assets/js/icons.js"></script>
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+/* ── RESPONSIVE HELPERS ── */
+@media (max-width:768px) {
+    section { padding:4rem 0; }
+    .hide-mobile { display:none !important; }
+}
+@media (min-width:769px) {
+    .hide-desktop { display:none !important; }
+}
