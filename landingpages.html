@@ -272,7 +272,10 @@
 /* Ventana del preview — altura fija, overflow hidden */
 .lp-card__preview {
     position: relative;
-    height: 260px;
+    /* La card muestra esta altura visible.
+       Con scale 0.236 y viewport 900px alto → 900 * 0.236 = 212px visible
+       Ponemos 220px para ver justo el hero completo */
+    height: 220px;
     overflow: hidden;
     background: #0d0c0a;
     border-radius: 14px 14px 0 0;
@@ -312,24 +315,30 @@
     transform: translateY(0);
 }
 .lp-card:hover .lp-card__site {
-    transform: translateY(-55%);
+    transform: translateY(-62%);
 }
 
 /* IFRAME ESCALADO — simula screenshot real de la web */
 .lp-card__iframe-wrap {
     width: 100%;
-    height: 900px;
+    /* Altura visible de la card = ancho_iframe * scale * aspect_ratio */
+    height: 700px;
     overflow: hidden;
     pointer-events: none;
+    background: var(--surface-2);
 }
 .lp-card__iframe {
-    width: 1280px;
-    height: 3500px;
+    /* 1440px de ancho real → se escala al ancho de la card (~340px)
+       scale = 340/1440 ≈ 0.236  */
+    width: 1440px;
+    height: 3200px;
     border: none;
-    transform: scale(0.265);
+    transform: scale(0.236);
     transform-origin: top left;
     pointer-events: none;
     display: block;
+    /* Evitar que el iframe muestre scrollbars */
+    overflow: hidden;
 }
 
 .lp-card__screenshot {
