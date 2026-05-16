@@ -681,29 +681,32 @@ function optimizeForConversion(elements) {
             <div class="divider"></div>
         </div>
 
-        <div class="lp-works__grid">
+        <div class="lp-works__grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr))">
 
-            <!-- ═══ PROYECTO 1 — ABCSolar (TRABAJO REAL) ═══ -->
+            <!-- 1 — ABCSolar (light mode forzado) -->
             <div class="lp-card anim-scale" style="animation-delay:0s">
                 <div class="lp-card__badge">✓ Trabajo real</div>
                 <div class="lp-card__preview">
-                    <div class="lp-card__browser">
-                        <span></span><span></span><span></span>
-                        <div class="lp-card__url"></div>
-                    </div>
+                    <div class="lp-card__browser"><span></span><span></span><span></span><div class="lp-card__url"></div></div>
                     <div class="lp-card__site">
                         <div class="lp-card__iframe-wrap">
                             <iframe class="lp-card__iframe"
                                 src="https://luis212-a.github.io/ABC/"
-                                loading="lazy"
-                                scrolling="no"
-                                title="ABCSolar">
+                                loading="lazy" scrolling="no" title="ABCSolar"
+                                onload="try{
+                                    var doc=this.contentDocument;
+                                    var s=doc.createElement('style');
+                                    s.textContent='*{color-scheme:light!important}:root{--bg:#f7f5f2!important;--surface:#fff!important;--text-1:#1a1814!important;--text-2:#4a453e!important;background:#f7f5f2!important}body{background:#f7f5f2!important}';
+                                    doc.head.appendChild(s);
+                                    doc.documentElement.removeAttribute('data-theme');
+                                    doc.documentElement.classList.remove('dark');
+                                }catch(e){}">
                             </iframe>
                         </div>
                     </div>
                     <div class="lp-card__overlay">
                         <a href="https://luis212-a.github.io/ABC/" target="_blank" rel="noopener" style="text-decoration:none;">
-                            <div class="lp-card__overlay-btn">Ver proyecto en vivo →</div>
+                            <div class="lp-card__overlay-btn">Ver en vivo →</div>
                         </a>
                     </div>
                 </div>
@@ -711,34 +714,29 @@ function optimizeForConversion(elements) {
                     <div class="lp-card__tags">
                         <span class="lp-card__tag" style="background:rgba(34,197,94,0.12);border-color:rgba(34,197,94,0.4);color:#22c55e;">Cliente real</span>
                         <span class="lp-card__tag">Energía Solar</span>
-                        <span class="lp-card__tag">Multi-sección</span>
+                        <span class="lp-card__tag">Calculadora</span>
                     </div>
                     <div class="lp-card__title">ABCSolar — Energía Solar México</div>
                     <div class="lp-card__desc">Calculadora de ahorro interactiva, modo oscuro/claro, múltiples secciones y diseño orientado a conversión.</div>
                 </div>
             </div>
 
-            <!-- ═══ PROYECTO 2 — Portafolio Ángel Alcántara ═══ -->
-            <div class="lp-card anim-scale" style="animation-delay:0.08s">
+            <!-- 2 — Portafolio Ángel -->
+            <div class="lp-card anim-scale" style="animation-delay:0.07s">
                 <div class="lp-card__badge">✓ Trabajo real</div>
                 <div class="lp-card__preview">
-                    <div class="lp-card__browser">
-                        <span></span><span></span><span></span>
-                        <div class="lp-card__url"></div>
-                    </div>
+                    <div class="lp-card__browser"><span></span><span></span><span></span><div class="lp-card__url"></div></div>
                     <div class="lp-card__site">
                         <div class="lp-card__iframe-wrap">
                             <iframe class="lp-card__iframe"
                                 src="https://luis212-a.github.io/PortFolio/"
-                                loading="lazy"
-                                scrolling="no"
-                                title="Portafolio Ángel Alcántara">
+                                loading="lazy" scrolling="no" title="Portafolio">
                             </iframe>
                         </div>
                     </div>
                     <div class="lp-card__overlay">
                         <a href="https://luis212-a.github.io/PortFolio/" target="_blank" rel="noopener" style="text-decoration:none;">
-                            <div class="lp-card__overlay-btn">Ver proyecto en vivo →</div>
+                            <div class="lp-card__overlay-btn">Ver en vivo →</div>
                         </a>
                     </div>
                 </div>
@@ -748,104 +746,98 @@ function optimizeForConversion(elements) {
                         <span class="lp-card__tag">Portafolio</span>
                         <span class="lp-card__tag">Editor de Video</span>
                     </div>
-                    <div class="lp-card__title">Portafolio Profesional — Editor de Video</div>
-                    <div class="lp-card__desc">Sitio web profesional con carrusel de videos, sección de skills, clientes, testimonios y panel de administración.</div>
+                    <div class="lp-card__title">Portafolio — Editor de Video</div>
+                    <div class="lp-card__desc">Sitio profesional con carrusel de videos, skills, clientes, testimonios y panel de administración.</div>
                 </div>
             </div>
 
-            <!-- ═══ PROYECTO 3 — Ejemplo: Coach / Curso ═══ -->
-            <div class="lp-card anim-scale" style="animation-delay:0.16s">
+            <!-- 3 — Spa Serenita -->
+            <div class="lp-card anim-scale" style="animation-delay:0.14s">
+                <div class="lp-card__badge">✓ Trabajo real</div>
                 <div class="lp-card__preview">
-                    <div class="lp-card__browser">
-                        <span></span><span></span><span></span>
-                        <div class="lp-card__url"></div>
-                    </div>
+                    <div class="lp-card__browser"><span></span><span></span><span></span><div class="lp-card__url"></div></div>
                     <div class="lp-card__site">
-                        <div style="background:#fff;width:100%;">
-                            <div style="background:linear-gradient(180deg,#faf8f4,#fff);padding:2rem 1.25rem 1.5rem;">
-                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
-                                    <div style="height:9px;width:65px;background:#c8a96e;border-radius:3px;"></div>
-                                    <div style="height:22px;width:80px;background:#c8a96e;border-radius:999px;"></div>
-                                </div>
-                                <div style="height:8px;width:100px;background:rgba(200,169,110,0.4);border-radius:3px;margin-bottom:0.75rem;"></div>
-                                <div style="height:20px;width:88%;background:#1a1814;border-radius:4px;margin-bottom:0.4rem;"></div>
-                                <div style="height:20px;width:65%;background:#1a1814;border-radius:4px;margin-bottom:1rem;"></div>
-                                <div style="height:10px;width:80%;background:rgba(26,24,20,0.18);border-radius:3px;margin-bottom:0.3rem;"></div>
-                                <div style="height:10px;width:60%;background:rgba(26,24,20,0.1);border-radius:3px;margin-bottom:1.25rem;"></div>
-                                <div style="height:36px;width:140px;background:#c8a96e;border-radius:999px;margin-bottom:2rem;"></div>
-                                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem;">
-                                    <div style="background:#f5f0e8;border:1px solid rgba(200,169,110,0.25);border-radius:6px;padding:0.5rem;height:50px;"></div>
-                                    <div style="background:#f5f0e8;border:1px solid rgba(200,169,110,0.25);border-radius:6px;padding:0.5rem;height:50px;"></div>
-                                    <div style="background:#f5f0e8;border:1px solid rgba(200,169,110,0.25);border-radius:6px;padding:0.5rem;height:50px;"></div>
-                                </div>
-                            </div>
-                            <div style="background:#1a1814;padding:1.5rem 1.25rem;">
-                                <div style="height:10px;width:60%;background:rgba(255,255,255,0.5);border-radius:3px;margin:0 auto 1rem;"></div>
-                                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
-                                    <div style="height:65px;background:rgba(200,169,110,0.08);border:1px solid rgba(200,169,110,0.15);border-radius:8px;"></div>
-                                    <div style="height:65px;background:rgba(200,169,110,0.08);border:1px solid rgba(200,169,110,0.15);border-radius:8px;"></div>
-                                </div>
-                            </div>
+                        <div class="lp-card__iframe-wrap">
+                            <iframe class="lp-card__iframe"
+                                src="https://luis212-a.github.io/SpaSerenita/"
+                                loading="lazy" scrolling="no" title="Spa Serenita">
+                            </iframe>
                         </div>
                     </div>
                     <div class="lp-card__overlay">
-                        <div class="lp-card__overlay-btn">Ejemplo de diseño</div>
+                        <a href="https://luis212-a.github.io/SpaSerenita/" target="_blank" rel="noopener" style="text-decoration:none;">
+                            <div class="lp-card__overlay-btn">Ver en vivo →</div>
+                        </a>
                     </div>
                 </div>
                 <div class="lp-card__info">
                     <div class="lp-card__tags">
-                        <span class="lp-card__tag">Coach</span>
-                        <span class="lp-card__tag">Curso Online</span>
-                        <span class="lp-card__tag">Ventas</span>
+                        <span class="lp-card__tag" style="background:rgba(34,197,94,0.12);border-color:rgba(34,197,94,0.4);color:#22c55e;">Cliente real</span>
+                        <span class="lp-card__tag">Spa</span>
+                        <span class="lp-card__tag">Bienestar</span>
                     </div>
-                    <div class="lp-card__title">Academia Pro — Página de Venta</div>
-                    <div class="lp-card__desc">Landing page para coach o curso online con módulos, testimonios, precios y acceso directo.</div>
+                    <div class="lp-card__title">Spa Serenita — Centro de Bienestar</div>
+                    <div class="lp-card__desc">Landing page elegante para spa con servicios, reservaciones y galería para atraer clientes locales.</div>
                 </div>
             </div>
 
-            <!-- ═══ PROYECTO 4 — Ejemplo: Negocio Local ═══ -->
-            <div class="lp-card anim-scale" style="animation-delay:0.24s">
+            <!-- 4 — Agencia Creativa -->
+            <div class="lp-card anim-scale" style="animation-delay:0.21s">
+                <div class="lp-card__badge">✓ Trabajo real</div>
                 <div class="lp-card__preview">
-                    <div class="lp-card__browser">
-                        <span></span><span></span><span></span>
-                        <div class="lp-card__url"></div>
-                    </div>
+                    <div class="lp-card__browser"><span></span><span></span><span></span><div class="lp-card__url"></div></div>
                     <div class="lp-card__site">
-                        <div style="background:#0a0806;width:100%;">
-                            <div style="background:linear-gradient(160deg,#0a0806,#1a1000);padding:2rem 1.25rem 1.5rem;">
-                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
-                                    <div style="height:9px;width:60px;background:#f59e0b;border-radius:3px;"></div>
-                                    <div style="height:22px;width:70px;background:#f59e0b;border-radius:999px;"></div>
-                                </div>
-                                <div style="height:20px;width:85%;background:rgba(255,255,255,0.9);border-radius:4px;margin-bottom:0.4rem;"></div>
-                                <div style="height:20px;width:60%;background:rgba(255,255,255,0.7);border-radius:4px;margin-bottom:1rem;"></div>
-                                <div style="height:10px;width:75%;background:rgba(255,255,255,0.2);border-radius:3px;margin-bottom:0.3rem;"></div>
-                                <div style="height:34px;width:120px;background:#f59e0b;border-radius:999px;margin-bottom:2rem;"></div>
-                                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem;">
-                                    <div style="height:60px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:8px;"></div>
-                                    <div style="height:60px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:8px;"></div>
-                                    <div style="height:60px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:8px;"></div>
-                                </div>
-                            </div>
-                            <div style="background:#1a1000;padding:1.5rem 1.25rem;">
-                                <div style="height:10px;width:65%;background:rgba(255,255,255,0.4);border-radius:3px;margin:0 auto 1rem;"></div>
-                                <div style="height:80px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.15);border-radius:8px;margin-bottom:0.5rem;"></div>
-                                <div style="height:80px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.15);border-radius:8px;"></div>
-                            </div>
+                        <div class="lp-card__iframe-wrap">
+                            <iframe class="lp-card__iframe"
+                                src="https://luis212-a.github.io/AgeciaCreativa/"
+                                loading="lazy" scrolling="no" title="Agencia Creativa">
+                            </iframe>
                         </div>
                     </div>
                     <div class="lp-card__overlay">
-                        <div class="lp-card__overlay-btn">Ejemplo de diseño</div>
+                        <a href="https://luis212-a.github.io/AgeciaCreativa/" target="_blank" rel="noopener" style="text-decoration:none;">
+                            <div class="lp-card__overlay-btn">Ver en vivo →</div>
+                        </a>
                     </div>
                 </div>
                 <div class="lp-card__info">
                     <div class="lp-card__tags">
-                        <span class="lp-card__tag">Negocio local</span>
-                        <span class="lp-card__tag">Restaurante</span>
-                        <span class="lp-card__tag">Reservas</span>
+                        <span class="lp-card__tag" style="background:rgba(34,197,94,0.12);border-color:rgba(34,197,94,0.4);color:#22c55e;">Cliente real</span>
+                        <span class="lp-card__tag">Agencia</span>
+                        <span class="lp-card__tag">Creativa</span>
                     </div>
-                    <div class="lp-card__title">Sabor & Arte — Menú y Reservaciones</div>
-                    <div class="lp-card__desc">Landing page para restaurante con menú visual, reservas y galería de platillos para atraer clientes locales.</div>
+                    <div class="lp-card__title">Agencia Creativa — Servicios Digitales</div>
+                    <div class="lp-card__desc">Sitio para agencia de marketing y diseño con portafolio de servicios y generación de leads.</div>
+                </div>
+            </div>
+
+            <!-- 5 — Asesorías Jurídicas -->
+            <div class="lp-card anim-scale" style="animation-delay:0.28s">
+                <div class="lp-card__badge">✓ Trabajo real</div>
+                <div class="lp-card__preview">
+                    <div class="lp-card__browser"><span></span><span></span><span></span><div class="lp-card__url"></div></div>
+                    <div class="lp-card__site">
+                        <div class="lp-card__iframe-wrap">
+                            <iframe class="lp-card__iframe"
+                                src="https://luis212-a.github.io/Asesorias-jur-dicas/"
+                                loading="lazy" scrolling="no" title="Asesorías Jurídicas">
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="lp-card__overlay">
+                        <a href="https://luis212-a.github.io/Asesorias-jur-dicas/" target="_blank" rel="noopener" style="text-decoration:none;">
+                            <div class="lp-card__overlay-btn">Ver en vivo →</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="lp-card__info">
+                    <div class="lp-card__tags">
+                        <span class="lp-card__tag" style="background:rgba(34,197,94,0.12);border-color:rgba(34,197,94,0.4);color:#22c55e;">Cliente real</span>
+                        <span class="lp-card__tag">Legal</span>
+                        <span class="lp-card__tag">Profesional</span>
+                    </div>
+                    <div class="lp-card__title">Asesorías Jurídicas — Despacho Legal</div>
+                    <div class="lp-card__desc">Sitio profesional para despacho jurídico con áreas de práctica, equipo y contacto para captación de clientes.</div>
                 </div>
             </div>
 
